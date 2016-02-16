@@ -12,7 +12,7 @@ import CoreLocation
 class Post {
     
     private let app = UIApplication.sharedApplication().delegate as! AppDelegate
-    private (set) var token:String?
+    private (set) var userToken:String?
     private (set) var userId:String?
     private (set) var text:String?
     private (set) var imageURL:String?
@@ -21,7 +21,7 @@ class Post {
     
     init(text:String, imageURL:String?, latitude:Double, longitude:Double){
         
-        self.token = app.sharedUserData["token"] as? String
+        self.userToken = app.sharedUserData["userToken"] as? String
         self.userId = app.sharedUserData["userId"] as? String
         
         self.text = text

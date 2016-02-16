@@ -25,6 +25,8 @@ enum Routing {
     enum TimeLine: String {
         //全てのタイムラインの表示
         case TimeLine = "/timeline/show_timeline.json"
+        //投稿に紐付いた返信の投稿を表示
+        case Reply = "/timeline/show_reply.json"
         //自分の投稿の表示
         case MyPost = "/timeline/show_mypost.json"
         //お気に入りの投稿の表示

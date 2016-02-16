@@ -21,7 +21,7 @@ class PostDispatcher {
     }
     
     private func setParams(post: Post){
-        if let token:String = post.token,
+        if let userToken:String = post.userToken,
             let userId:String = post.userId,
             let text:String = post.text,
             let latitude:Double = post.latitude,
@@ -29,7 +29,7 @@ class PostDispatcher {
                 
                 params = [
                     "user":[
-                        "token": token,
+                        "userToken": userToken,
                         "userId": userId
                     ],
                     "post":[
@@ -67,7 +67,6 @@ class PostDispatcher {
         if let imageURL = params["post"]!["imageURL"] as? String {
             let postImage: NSString = NSString(string: imageURL)
             fileURL = NSBundle.mainBundle().URLForResource(postImage.stringByDeletingPathExtension, withExtension: postImage.pathExtension)!
-
         }
         
         Alamofire.upload(.POST, uploadURL, multipartFormData: { (multipartFormData) in

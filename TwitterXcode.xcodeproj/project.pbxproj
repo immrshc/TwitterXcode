@@ -20,6 +20,8 @@
 		E2B4E5B21C72F13C003F3FD9 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B4E5B11C72F13C003F3FD9 /* Post.swift */; };
 		E2B4E5B41C72F149003F3FD9 /* PostDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B4E5B31C72F149003F3FD9 /* PostDispatcher.swift */; };
 		E2B4E5B61C7311BD003F3FD9 /* Image02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2B4E5B51C7311BD003F3FD9 /* Image02.jpg */; };
+		E2B4E5B81C731474003F3FD9 /* TimeLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B4E5B71C731474003F3FD9 /* TimeLine.swift */; };
+		E2B4E5BA1C73148E003F3FD9 /* TimeLineFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B4E5B91C73148E003F3FD9 /* TimeLineFetcher.swift */; };
 		E2ED4FF61C71B5C50000E5F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED4FF51C71B5C50000E5F3 /* AppDelegate.swift */; };
 		E2ED4FF81C71B5C50000E5F3 /* TopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED4FF71C71B5C50000E5F3 /* TopController.swift */; };
 		E2ED4FFB1C71B5C50000E5F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2ED4FF91C71B5C50000E5F3 /* Main.storyboard */; };
@@ -33,7 +35,7 @@
 		E2ED50341C71CFE50000E5F3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED50331C71CFE50000E5F3 /* TabBarController.swift */; };
 		E2ED50361C71D0220000E5F3 /* TimeLineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED50351C71D0220000E5F3 /* TimeLineController.swift */; };
 		E2ED50381C71D0460000E5F3 /* TimeLineDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED50371C71D0460000E5F3 /* TimeLineDetailTableViewCell.swift */; };
-		E2ED503A1C71D1C10000E5F3 /* TimeLineDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED50391C71D1C10000E5F3 /* TimeLineDetailViewController.swift */; };
+		E2ED503A1C71D1C10000E5F3 /* TimeLineDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED50391C71D1C10000E5F3 /* TimeLineDetailController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,9 @@
 		E2B4E5B11C72F13C003F3FD9 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		E2B4E5B31C72F149003F3FD9 /* PostDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDispatcher.swift; sourceTree = "<group>"; };
 		E2B4E5B51C7311BD003F3FD9 /* Image02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Image02.jpg; sourceTree = "<group>"; };
+		E2B4E5B71C731474003F3FD9 /* TimeLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLine.swift; sourceTree = "<group>"; };
+		E2B4E5B91C73148E003F3FD9 /* TimeLineFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineFetcher.swift; sourceTree = "<group>"; };
+		E2B4E5BC1C733477003F3FD9 /* TwitterXcode-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TwitterXcode-Bridging-Header.h"; sourceTree = "<group>"; };
 		E2ED4FF21C71B5C50000E5F3 /* TwitterXcode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterXcode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2ED4FF51C71B5C50000E5F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2ED4FF71C71B5C50000E5F3 /* TopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopController.swift; sourceTree = "<group>"; };
@@ -88,7 +93,7 @@
 		E2ED50331C71CFE50000E5F3 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E2ED50351C71D0220000E5F3 /* TimeLineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineController.swift; sourceTree = "<group>"; };
 		E2ED50371C71D0460000E5F3 /* TimeLineDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineDetailTableViewCell.swift; sourceTree = "<group>"; };
-		E2ED50391C71D1C10000E5F3 /* TimeLineDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineDetailViewController.swift; sourceTree = "<group>"; };
+		E2ED50391C71D1C10000E5F3 /* TimeLineDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineDetailController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +182,7 @@
 				E2ED502E1C71CF0C0000E5F3 /* Layout */,
 				E2ED4FFC1C71B5C50000E5F3 /* Assets.xcassets */,
 				E2ED50011C71B5C50000E5F3 /* Info.plist */,
+				E2B4E5BC1C733477003F3FD9 /* TwitterXcode-Bridging-Header.h */,
 			);
 			path = TwitterXcode;
 			sourceTree = "<group>";
@@ -207,7 +213,7 @@
 				E2ED50311C71CFAF0000E5F3 /* SignUpController.swift */,
 				E2ED50331C71CFE50000E5F3 /* TabBarController.swift */,
 				E2ED50351C71D0220000E5F3 /* TimeLineController.swift */,
-				E2ED50391C71D1C10000E5F3 /* TimeLineDetailViewController.swift */,
+				E2ED50391C71D1C10000E5F3 /* TimeLineDetailController.swift */,
 				E2B270EF1C723C670025B7F6 /* PostController.swift */,
 			);
 			name = Controller;
@@ -221,6 +227,8 @@
 				E2B20FFE1C7278B30079D782 /* Routing.swift */,
 				E2B4E5B11C72F13C003F3FD9 /* Post.swift */,
 				E2B4E5B31C72F149003F3FD9 /* PostDispatcher.swift */,
+				E2B4E5B71C731474003F3FD9 /* TimeLine.swift */,
+				E2B4E5B91C73148E003F3FD9 /* TimeLineFetcher.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -442,6 +450,7 @@
 				E2ED4FF81C71B5C50000E5F3 /* TopController.swift in Sources */,
 				E2B20FFF1C7278B30079D782 /* Routing.swift in Sources */,
 				E2ED4FF61C71B5C50000E5F3 /* AppDelegate.swift in Sources */,
+				E2B4E5BA1C73148E003F3FD9 /* TimeLineFetcher.swift in Sources */,
 				E2B270E31C7204900025B7F6 /* AccountHeaderView.swift in Sources */,
 				E2ED50341C71CFE50000E5F3 /* TabBarController.swift in Sources */,
 				E2ED50361C71D0220000E5F3 /* TimeLineController.swift in Sources */,
@@ -450,7 +459,8 @@
 				E2B4E5B41C72F149003F3FD9 /* PostDispatcher.swift in Sources */,
 				E2B20FFD1C72782B0079D782 /* UserFetcher.swift in Sources */,
 				E2ED50381C71D0460000E5F3 /* TimeLineDetailTableViewCell.swift in Sources */,
-				E2ED503A1C71D1C10000E5F3 /* TimeLineDetailViewController.swift in Sources */,
+				E2ED503A1C71D1C10000E5F3 /* TimeLineDetailController.swift in Sources */,
+				E2B4E5B81C731474003F3FD9 /* TimeLine.swift in Sources */,
 				E2ED50321C71CFAF0000E5F3 /* SignUpController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -592,10 +602,13 @@
 			baseConfigurationReference = 4D9D7C01D95CC88FA8EB1139 /* Pods-TwitterXcode.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = TwitterXcode/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.imamura.TwitterXcode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TwitterXcode/TwitterXcode-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -604,10 +617,12 @@
 			baseConfigurationReference = DA27730D46EB3261AD5744EF /* Pods-TwitterXcode.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = TwitterXcode/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.imamura.TwitterXcode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TwitterXcode/TwitterXcode-Bridging-Header.h";
 			};
 			name = Release;
 		};

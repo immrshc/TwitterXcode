@@ -362,28 +362,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="183" id="oFu-ln-6fG" customClass="TimeLineTableViewCell" customModule="TwitterXcode" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimeLineCell" rowHeight="183" id="oFu-ln-6fG" customClass="TimeLineTableViewCell" customModule="TwitterXcode" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="320" height="183"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oFu-ln-6fG" id="xZ9-Ki-sic">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="182"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ユーザ名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0Y-gM-2t5">
-                                            <rect key="frame" x="52" y="8" width="172" height="25"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="25" id="4dV-6f-p3I"/>
-                                                <constraint firstAttribute="width" constant="120" id="t21-5c-q4L"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="t21-5c-q4L"/>
-                                                </mask>
-                                            </variation>
-                                        </label>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ac1-Fs-wss">
                                             <rect key="frame" x="52" y="41" width="260" height="85"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -460,6 +445,21 @@
                                                 <constraint firstAttribute="width" secondItem="Pke-KR-uyf" secondAttribute="height" multiplier="1:1" id="jTi-L3-xg7"/>
                                             </constraints>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ユーザ名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0Y-gM-2t5">
+                                            <rect key="frame" x="52" y="8" width="172" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="4dV-6f-p3I"/>
+                                                <constraint firstAttribute="width" constant="120" id="t21-5c-q4L"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="t21-5c-q4L"/>
+                                                </mask>
+                                            </variation>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="zGh-H3-sLU" firstAttribute="width" secondItem="RCY-C2-Q10" secondAttribute="width" id="1De-vo-Sop"/>
@@ -506,7 +506,8 @@
                                 <connections>
                                     <outlet property="favoriteButton" destination="fuy-ao-eBf" id="v5F-yc-G9h"/>
                                     <outlet property="favoriteCountLabel" destination="RCY-C2-Q10" id="UUu-Lm-C6t"/>
-                                    <outlet property="imageUrlLabel" destination="Dqr-d6-KHU" id="9oh-Ll-rjA"/>
+                                    <outlet property="imageUrlLabel" destination="Dqr-d6-KHU" id="Vp5-x2-QHe"/>
+                                    <outlet property="postHeight" destination="QJB-dQ-ixp" id="TO1-Xu-AQI"/>
                                     <outlet property="postTV" destination="ac1-Fs-wss" id="KOJ-Ky-SiW"/>
                                     <outlet property="replyButton" destination="zGh-H3-sLU" id="PeE-3v-Wyy"/>
                                     <outlet property="retweetButton" destination="gQu-1w-gg6" id="egH-Td-5Dl"/>
@@ -541,13 +542,13 @@
         <!--Time Line Detail Controller-->
         <scene sceneID="QHZ-A9-uXZ">
             <objects>
-                <tableViewController id="hxM-UV-4yb" customClass="TimeLineDetailController" customModule="TwitterXcode" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TimeLineDetailCtrl" id="hxM-UV-4yb" customClass="TimeLineDetailController" customModule="TwitterXcode" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="cV8-eJ-2kU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="376" id="g1q-9d-2Pu" customClass="TimeLineDetailTableViewCell" customModule="TwitterXcode" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TimeLineDetailCell" rowHeight="376" id="g1q-9d-2Pu" customClass="TimeLineDetailTableViewCell" customModule="TwitterXcode" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="376"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g1q-9d-2Pu" id="qhv-f9-Fvz">
@@ -620,12 +621,6 @@
                                             <rect key="frame" x="160" y="337" width="30" height="30"/>
                                             <state key="normal" title="..."/>
                                         </button>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LXH-XL-QaE">
-                                            <rect key="frame" x="8" y="204" width="304" height="125"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" priority="250" constant="130" id="cT8-xr-59o"/>
-                                            </constraints>
-                                        </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vj1-9a-2Vm">
                                             <rect key="frame" x="8" y="337" width="30" height="30"/>
                                             <constraints>
@@ -634,6 +629,12 @@
                                             </constraints>
                                             <state key="normal" title="★"/>
                                         </button>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LXH-XL-QaE">
+                                            <rect key="frame" x="8" y="204" width="304" height="125"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" priority="250" constant="130" id="cT8-xr-59o"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="I9C-ZS-wiY" firstAttribute="top" secondItem="qhv-f9-Fvz" secondAttribute="top" constant="8" id="1Dq-Nq-XcR"/>
@@ -714,13 +715,15 @@
                                 <connections>
                                     <outlet property="favoriteButton" destination="vj1-9a-2Vm" id="Aw4-Zh-3Nc"/>
                                     <outlet property="favoriteCountLabel" destination="ywm-Ww-97h" id="WNj-ov-f9q"/>
+                                    <outlet property="photoHeight" destination="cT8-xr-59o" id="0WE-kp-4eG"/>
+                                    <outlet property="postHeight" destination="Rie-Cf-Aa2" id="vlf-Il-MLt"/>
                                     <outlet property="postIV" destination="LXH-XL-QaE" id="uyB-h6-NSk"/>
                                     <outlet property="postTV" destination="0kc-aP-TY3" id="Vqz-sa-Xty"/>
                                     <outlet property="replyButton" destination="mVk-d0-xcG" id="CAd-in-2o9"/>
                                     <outlet property="retweetButton" destination="N5L-uQ-GOv" id="fuU-vP-tF2"/>
                                     <outlet property="retweetCountLabel" destination="hBY-IM-c9c" id="AHG-Tb-oZU"/>
-                                    <outlet property="searchUserIdButton" destination="I9C-ZS-wiY" id="qYf-1H-K79"/>
-                                    <outlet property="userIV" destination="j1h-Sl-D6X" id="5kE-ZE-ygt"/>
+                                    <outlet property="searchUserIdButton" destination="I9C-ZS-wiY" id="Leb-zP-Ra3"/>
+                                    <outlet property="userIV" destination="j1h-Sl-D6X" id="kMj-cR-58D"/>
                                     <outlet property="userNameLabel" destination="NUH-Kl-fmY" id="sFE-5s-xbD"/>
                                 </connections>
                             </tableViewCell>
@@ -797,7 +800,7 @@
         <!--Post Controller-->
         <scene sceneID="czo-iX-OjA">
             <objects>
-                <viewController id="we1-eb-lmi" customClass="PostController" customModule="TwitterXcode" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostCtrl" id="we1-eb-lmi" customClass="PostController" customModule="TwitterXcode" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uqJ-DA-xCe"/>
                         <viewControllerLayoutGuide type="bottom" id="Rxl-6f-xPS"/>
