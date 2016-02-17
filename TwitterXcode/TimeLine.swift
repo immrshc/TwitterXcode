@@ -10,46 +10,54 @@ import SwiftyJSON
 
 class TimeLine {
     
-    private (set) var postToken:String?
-    private (set) var favoriteCheck:Bool = false
-    private (set) var favoriteCount:Int = 0
-    private (set) var username:String?
-    private (set) var userIconURL:String?
+    struct ImageOfTimeLine {
+        private (set) var url:String?
+        private (set) var size: CGSize?
+    }
+    
+    private (set) var post_token:String?
     private (set) var text:String?
-    private (set) var imageURL:String?
     private (set) var latitude:Double?
     private (set) var longitude:Double?
+    private (set) var image_info:ImageOfTimeLine?
+    
+    private (set) var username:String?
+    private (set) var icon_image_url:String?
+    
+    private (set) var favorite_check:Bool = false
+    private (set) var favorite_count:Int = 0
     
     init(
-        postToken: String,
-        favoriteCheck: Bool,
-        favorite_count: Int,
-        username: String,
-        userIconURL: String,
-        text: String,
-        imageURL: String,
-        latitude: Double,
-        longitude: Double
+            post_token: String,
+            favorite_check: Bool,
+            favorite_count: Int,
+            username: String,
+            icon_image_url: String,
+            text: String,
+            image_url: String?,
+            image_size: CGSize?,
+            latitude: Double,
+            longitude: Double
         ){
-            self.postToken = postToken
-            self.favoriteCheck = favoriteCheck
-            self.favoriteCount = favorite_count
+            self.post_token = post_token
+            self.favorite_check = favorite_check
+            self.favorite_count = favorite_count
             self.username = username
-            self.userIconURL = userIconURL
+            self.icon_image_url = icon_image_url
             self.text = text
-            self.imageURL = imageURL
+            self.image_info = ImageOfTimeLine(url: image_url, size: image_size)
             self.latitude = latitude
             self.longitude = longitude
     }
     
     //お気に入り状態の切り替え
     func changeFavoriteState(){
-        if self.favoriteCheck == true {
-            self.favoriteCount -= 1
+        if self.favorite_check == true {
+            self.favorite_count -= 1
         } else {
-            self.favoriteCount += 1
+            self.favorite_count += 1
         }
-        self.favoriteCheck = !self.favoriteCheck
+        self.favorite_check = !self.favorite_check
     }
     
     //投稿文のラベルの高さを返す
@@ -66,13 +74,14 @@ class TimeLineWrapper {
     func getInstance(json:JSON) -> TimeLine {
         
         let timeLine = TimeLine (
-            postToken: json["postToken"].stringValue,
-            favoriteCheck: json["favorite"].boolValue,
+            post_token: json["post"]["post_token"].stringValue,
+            favorite_check: json["favorite_state"].boolValue,
             favorite_count: json["favorite_count"].intValue,
             username: json["user"]["username"].stringValue,
-            userIconURL: json["user"]["userIconURL"].stringValue,
-            text: json["text"].stringValue,
-            imageURL: self.getImageURL(json),
+            icon_image_url: json["user"]["icon_image_url"].stringValue,
+            text: json["post"]["text"].stringValue,
+            image_url: self.getImageURL(json),
+            image_size: self.getImageSize(json),
             latitude: json["latitude"].doubleValue,
             longitude: json["longitude"].doubleValue
         )
@@ -81,11 +90,21 @@ class TimeLineWrapper {
     }
     
     //画像のURLを指定する
-    private func getImageURL(json: JSON) -> String {
-        if json["imageURL"] != nil && json["imageURL"].stringValue.utf16.count != 0 {
-            return json["imageURL"].stringValue
+    private func getImageURL(json: JSON) -> String? {
+        if json["image_url"] != nil && json["image_url"].stringValue.utf16.count != 0 {
+            return json["image_url"].stringValue
         } else {
-            return ""
+            return nil
+        }
+    }
+    
+    private func getImageSize(json: JSON) -> CGSize? {
+        if json["post"]["image_width"] != nil && json["post"]["image_height"] != nil {
+            let width = json["post"]["image_width"].doubleValue
+            let height = json["post"]["image_height"].doubleValue
+            return CGSize(width: width, height: height)
+        } else {
+            return nil
         }
     }
 }

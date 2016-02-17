@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class TimeLineDetailController: UITableViewController {
     
@@ -26,8 +27,8 @@ class TimeLineDetailController: UITableViewController {
     
     //タイムラインを非同期で取得する
     func getTimeLine(){
-        let postToken = postArray[0].postToken
-        TimeLineFetcher(postToken: postToken!).download { (items) -> Void in
+        let post_token = postArray[0].post_token
+        TimeLineFetcher(post_token: post_token!).download { (items) -> Void in
             self.postArray = items
             self.tableView.reloadData()
         }
@@ -35,8 +36,8 @@ class TimeLineDetailController: UITableViewController {
     
     //上に引っ張ると投稿をリロードする
     func refresh(){
-        let postToken = postArray[0].postToken
-        TimeLineFetcher(postToken: postToken!).download { (items) -> Void in
+        let post_token = postArray[0].post_token
+        TimeLineFetcher(post_token: post_token!).download { (items) -> Void in
             self.postArray = items
             self.refreshCtrl.endRefreshing()
             self.tableView.reloadData()
@@ -53,7 +54,7 @@ class TimeLineDetailController: UITableViewController {
     
     //セクション数を指定する
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 0
+        return 1
     }
     
     //セルの数を指定する
@@ -67,5 +68,25 @@ class TimeLineDetailController: UITableViewController {
         cell.displayUpdate(postArray[indexPath.row])
         return cell
     }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let cell = tableView.dequeueReusableCellWithIdentifier("TimeLineDetailCell", forIndexPath: indexPath) as! TimeLineDetailTableViewCell
+        let font = UIFont(name: "Times New Roman", size: 14)!
+        let text_height = postArray[indexPath.row].heightForComment(font, width: cell.postTV.bounds.width)
+        let photo_height = self.calculatePhotoHeight(postArray[indexPath.row])
+        let other_height = CGFloat(130)
+        return other_height + text_height + photo_height
+    }
+    
+    private func calculatePhotoHeight(post: TimeLine) -> CGFloat {
+        if let photo_size:CGSize = post.image_info?.size {
+            let boundingRect =  CGRect(x: 0, y: 0, width: photo_size.width, height: CGFloat(MAXFLOAT))
+            let rect  = AVMakeRectWithAspectRatioInsideRect(photo_size, boundingRect)
+            return rect.size.height
+        } else {
+            return CGFloat(0)
+        }
+    }
+
 
 }

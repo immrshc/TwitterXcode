@@ -21,16 +21,16 @@ class PostDispatcher {
     }
     
     private func setParams(post: Post){
-        if let userToken:String = post.userToken,
-            let userId:String = post.userId,
+        if let user_token:String = post.user_token,
+            let user_identifier:String = post.user_identifier,
             let text:String = post.text,
             let latitude:Double = post.latitude,
             let longitude:Double = post.longitude {
                 
                 params = [
                     "user":[
-                        "userToken": userToken,
-                        "userId": userId
+                        "user_token": user_token,
+                        "user_identifier": user_identifier
                     ],
                     "post":[
                         "text": text,
@@ -39,8 +39,8 @@ class PostDispatcher {
                     ]
                 ]
                 
-                if let imageURL = post.imageURL {
-                    params.updateValue(["imageURL": imageURL], forKey: "post")
+                if let image_url = post.image_url {
+                    params.updateValue(["image_url": image_url], forKey: "post")
                 }
         }
     }
@@ -64,7 +64,7 @@ class PostDispatcher {
     //画像のアップロードと投稿情報のリクエストをする
     func uploadWithImage(callback: (Bool) -> Void){
         
-        if let imageURL = params["post"]!["imageURL"] as? String {
+        if let imageURL = params["post"]!["image_url"] as? String {
             let postImage: NSString = NSString(string: imageURL)
             fileURL = NSBundle.mainBundle().URLForResource(postImage.stringByDeletingPathExtension, withExtension: postImage.pathExtension)!
         }
@@ -87,8 +87,16 @@ class PostDispatcher {
                 //エンコード成功時
                 case .Success(let upload, _, _):
                     upload.responseJSON { _, _, result in
-                        print("result:\(result.isSuccess)")
-                        callback(result.isSuccess)
+                        if result.isSuccess,
+                            let res = result.value as? [String:AnyObject]{
+                                if res["result"]!.intValue == 1 {
+                                    callback(true)
+                                } else {
+                                    callback(false)
+                                }
+                        } else {
+                            callback(false)
+                        }
                     }
                 //エンコード失敗時
                 case .Failure(let encodingError):

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class TimeLineController: UITableViewController {
     
@@ -63,7 +64,7 @@ class TimeLineController: UITableViewController {
 
     //セクション数を指定する
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 0
+        return 1
     }
 
     //セルの数を指定する
@@ -78,11 +79,31 @@ class TimeLineController: UITableViewController {
         return cell
     }
     
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let cell = tableView.dequeueReusableCellWithIdentifier("TimeLineCell", forIndexPath: indexPath) as! TimeLineTableViewCell
+        let font = UIFont(name: "Times New Roman", size: 14)!
+        let label_height = cell.userNameLabel.bounds.height
+        let text_height = postArray[indexPath.row].heightForComment(font, width: cell.postTV.bounds.width)
+        let photo_height = self.calculatePhotoHeight(postArray[indexPath.row])
+        let padding_height = CGFloat(62)
+        return label_height + text_height + photo_height + padding_height
+    }
+    
     //詳細画面へ遷移する
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let vc = self.storyboard?.instantiateViewControllerWithIdentifier("TimeLineDetailCtrl") as? TimeLineDetailController {
             vc.postArray.append(self.postArray[indexPath.row])
             self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    private func calculatePhotoHeight(post: TimeLine) -> CGFloat {
+        if let photo_size:CGSize = post.image_info?.size {
+            let boundingRect =  CGRect(x: 0, y: 0, width: photo_size.width, height: CGFloat(MAXFLOAT))
+            let rect  = AVMakeRectWithAspectRatioInsideRect(photo_size, boundingRect)
+            return rect.size.height
+        } else {
+            return CGFloat(0)
         }
     }
 }

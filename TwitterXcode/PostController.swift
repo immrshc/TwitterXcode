@@ -10,7 +10,7 @@ import UIKit
 
 class PostController: UIViewController, UITabBarDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    private var imageURL:String = ""
+    private var image_url:String = ""
     private var latitude: Double?
     private var longitude: Double?
     
@@ -21,7 +21,7 @@ class PostController: UIViewController, UITabBarDelegate, UIImagePickerControlle
     
     //投稿する画像を選択する際に必要な処理をする
     private func setPhoto(imagePath: String){
-        self.imageURL = imagePath
+        self.image_url = imagePath
         postIV.image = UIImage(named:imagePath)
         if let height = postIV.image?.size.height {
             if height <= CGFloat(190) {
@@ -40,7 +40,7 @@ class PostController: UIViewController, UITabBarDelegate, UIImagePickerControlle
         if let latitude = self.latitude,
             let longitude = self.longitude,
             let text = postTV.text {
-                let post = PostWrapper.getInstance(["text": text, "ImageURL": imageURL, "latitude": latitude, "longitude": longitude])
+                let post = PostWrapper.getInstance(["text": text, "image_url": image_url, "latitude": latitude, "longitude": longitude])
                 if postIV.image != nil {
                     //画像無しの場合
                     PostDispatcher(post: post).upload{(result) -> Void in

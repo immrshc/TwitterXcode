@@ -15,8 +15,8 @@ enum Routing {
     
     enum Auth: String {
         //ユーザ認証
-        case SignUp = "/auth/signup.json"
-        case SignIn = "/auth/signin.json"
+        case SignUp = "/authentication/sign_up.json"
+        case SignIn = "/authentication/sign_in.json"
         func getURL() -> String {
             return Routing.Base.Host.rawValue + self.rawValue
         }
@@ -24,13 +24,13 @@ enum Routing {
     
     enum TimeLine: String {
         //全てのタイムラインの表示
-        case TimeLine = "/timeline/show_timeline.json"
+        case TimeLine = "/timeline/show.json"
         //投稿に紐付いた返信の投稿を表示
         case Reply = "/timeline/show_reply.json"
         //自分の投稿の表示
-        case MyPost = "/timeline/show_mypost.json"
+        case MyPost = "/timeline/show/mypost.json"
         //お気に入りの投稿の表示
-        case MyFavorite = "/timeline/show_myfavorite.json"
+        case MyFavorite = "/timeline/show/myfavorite.json"
         func getURL() -> String  {
             return Routing.Base.Host.rawValue + self.rawValue
         }
@@ -38,9 +38,9 @@ enum Routing {
     
     enum Post: String {
         //投稿文のリクエスト
-        case Text = "/post/create.json"
+        case Text = "/post/without.json"
         //画像のアップロード
-        case Image = "/post/upload_process.json"
+        case Image = "/post/with.json"
         func getURL() -> String {
             return Routing.Base.Host.rawValue + self.rawValue
         }

@@ -17,20 +17,16 @@ class TimeLineFetcher {
     init(){
         defaultParameter = [
             "user":[
-                "userToken":(app.sharedUserData["userToken"])!,
-                "userId":(app.sharedUserData["userId"])!
+                "user_token":(app.sharedUserData["user_token"])!,
+                "user_identifier":(app.sharedUserData["user_identifier"])!
             ]
         ]
         baseURL = Routing.TimeLine.TimeLine.getURL()
     }
     
     //postTokenに紐付いた投稿と、それに対する返信の投稿の配列を取る
-    init(postToken: String){
-        defaultParameter = [
-            "post":[
-                "postToken": postToken,
-            ]
-        ]
+    init(post_token: String){
+        defaultParameter = ["post":["post_token": post_token]]
         baseURL = Routing.TimeLine.Reply.getURL()
     }
     
@@ -43,6 +39,7 @@ class TimeLineFetcher {
                         let post = TimeLineWrapper().getInstance(JSON(posts[i]))
                         postArray.append(post)
                     }
+                    print(postArray)
                     callback(postArray)
             } else {
                 callback([])

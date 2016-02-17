@@ -57,12 +57,12 @@ class SignUpController: UIViewController, UITextInputTraits, UITextFieldDelegate
     
     //入力された情報のリクエスト
     private func checkTextField(){
-        if let userId = userIdTF.text,
+        if let user_identifier = userIdTF.text,
             let email = emailTF.text,
             let username = userNameTF.text,
             let password = passwordTF.text {
                 //非同期で情報を送って検証する
-                UserFetcher(userId: userId, password: password, username: username, email: email).download{(result) -> Void in
+                UserFetcher(user_identifier: user_identifier, password: password, username: username, email: email).download{(result) -> Void in
                     if result == true {
                         //検証の成否で画面遷移をする
                         self.showTimeLine()
