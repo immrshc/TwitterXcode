@@ -27,6 +27,7 @@ class TimeLineTableViewCell: UITableViewCell {
     
     //初期設定をする
     func displayUpdate(timeline: TimeLine){
+        
         post = timeline
         userNameLabel.text = post?.username
         
@@ -51,7 +52,7 @@ class TimeLineTableViewCell: UITableViewCell {
         
         //お気に入りボタンの更新処理を設定する
         favoriteButton.addTarget(self, action: "favoriteUpdate:", forControlEvents: UIControlEvents.TouchUpInside)
-
+        
         //お気に入りボタンの初期状態の設定
         favoriteCountLabel.text = String(post!.favorite_count)
         if post!.favorite_check {
@@ -59,7 +60,6 @@ class TimeLineTableViewCell: UITableViewCell {
         } else {
             favoriteButton.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
         }
-        
     }
     
     //お気に入りボタンの処理
@@ -76,5 +76,4 @@ class TimeLineTableViewCell: UITableViewCell {
             favoriteCountLabel.text = String(post.favorite_count)
         }
     }
-
 }

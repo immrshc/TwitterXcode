@@ -11,6 +11,7 @@ import AVFoundation
 
 class PostController: UIViewController, UITabBarDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    var receiver_post:TimeLine?
     var image_url: String = ""
     private var latitude: Double?
     private var longitude: Double?
@@ -50,7 +51,7 @@ class PostController: UIViewController, UITabBarDelegate, UIImagePickerControlle
                 if let post = post {
                     if post.image_url != nil {
                         //画像ありの場合
-                        PostDispatcher(post: post).uploadWithImage{(result) -> Void in
+                        PostDispatcher(post: post, receiver_post: receiver_post).uploadWithImage{(result) -> Void in
                             if result {
                                 print("画像とテキストの投稿が完了しました")
                             } else {
@@ -59,7 +60,7 @@ class PostController: UIViewController, UITabBarDelegate, UIImagePickerControlle
                         }
                     } else {
                         //画像無しの場合
-                        PostDispatcher(post: post).upload{(result) -> Void in
+                        PostDispatcher(post: post, receiver_post: receiver_post).upload{(result) -> Void in
                             if result {
                                 print("テキストの投稿が完了しました")
                             } else {
@@ -78,6 +79,10 @@ class PostController: UIViewController, UITabBarDelegate, UIImagePickerControlle
         selectImageTB.delegate = self
         
         photoHeight.constant = CGFloat(0)
+        
+        if let username = receiver_post?.username {
+            postTV.text = "Dear: \(username)"
+        }
         
         //取得した位置情報を設定する
         let app = UIApplication.sharedApplication().delegate as! AppDelegate

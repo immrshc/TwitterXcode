@@ -16,11 +16,11 @@ class PostDispatcher {
     private var params:[String:[String:AnyObject]] = [:]
     private var fileURL:NSURL?
 
-    init(post:Post){
-        self.setParams(post)
+    init(post:Post, receiver_post: TimeLine?){
+        self.setParams(post, receiver_post: receiver_post)
     }
     
-    private func setParams(post: Post){
+    private func setParams(post: Post, receiver_post: TimeLine?){
         if let user_token:String = post.user_token,
             let user_identifier:String = post.user_identifier,
             let text:String = post.text,
@@ -40,7 +40,11 @@ class PostDispatcher {
                 ]
                 
                 if let image_url = post.image_url {
-                    params.updateValue(["image_url": image_url], forKey: "post")
+                    params["post"]?.updateValue(image_url, forKey: "image_url")
+                }
+                
+                if let receiver_token = receiver_post?.post_token {
+                    params["post"]?.updateValue(receiver_token, forKey: "receiver_token")
                 }
         }
     }
@@ -70,15 +74,32 @@ class PostDispatcher {
         }
         
         Alamofire.upload(.POST, uploadURL, multipartFormData: { (multipartFormData) in
-                //画像をアップロードする
-                if let fileURL = self.fileURL {
-                    multipartFormData.appendBodyPart(fileURL: fileURL, name: "image")
+                if let user_token = self.params["user"]!["user_token"] as? String,
+                    let user_identifier = self.params["user"]!["user_identifier"] as? String,
+                    let text = self.params["post"]!["text"] as? String,
+                    let latitude = self.params["post"]!["latitude"] as? Double,
+                    let longitude = self.params["post"]!["longitude"] as? Double {
+                        multipartFormData.appendBodyPart(data: user_token.dataUsingEncoding(NSUTF8StringEncoding)!, name: "user_token")
+                        multipartFormData.appendBodyPart(data: user_identifier.dataUsingEncoding(NSUTF8StringEncoding)!, name: "user_identifier")
+                        multipartFormData.appendBodyPart(data: text.dataUsingEncoding(NSUTF8StringEncoding)!, name: "text")
+                        multipartFormData.appendBodyPart(data: String(latitude).dataUsingEncoding(NSUTF8StringEncoding)!, name: "latitude")
+                        multipartFormData.appendBodyPart(data: String(longitude).dataUsingEncoding(NSUTF8StringEncoding)!, name: "longitude")
                 }
+                if let receiver_token = self.params["post"]!["receiver_token"] as? String {
+                    multipartFormData.appendBodyPart(data: receiver_token.dataUsingEncoding(NSUTF8StringEncoding)!, name: "receiver_token")
+                }
+            
+                /*
                 //辞書型データをNSData型にする
                 let userData:NSData = NSKeyedArchiver.archivedDataWithRootObject(self.params["user"]!)
                 multipartFormData.appendBodyPart(data: userData, name: "user")
                 let postData:NSData = NSKeyedArchiver.archivedDataWithRootObject(self.params["post"]!)
                 multipartFormData.appendBodyPart(data: postData, name: "post")
+                */
+                //画像をアップロードする
+                if let fileURL = self.fileURL {
+                    multipartFormData.appendBodyPart(fileURL: fileURL, name: "image")
+                }
 
             },
             //リクエストボディ生成のエンコード処理が完了したら呼ばれる

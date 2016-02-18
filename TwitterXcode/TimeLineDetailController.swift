@@ -90,14 +90,27 @@ class TimeLineDetailController: UITableViewController {
             
             let cell = tableView.dequeueReusableCellWithIdentifier("TimeLineDetailCell", forIndexPath: indexPath) as! TimeLineDetailTableViewCell
             cell.displayUpdate(postArray[indexPath.row])
+            cell.replyButton.tag = indexPath.row
+            cell.replyButton.addTarget(self, action: "showReply:", forControlEvents: UIControlEvents.TouchUpInside)
             return cell
             
         } else {
             
             let cell = tableView.dequeueReusableCellWithIdentifier("TimeLineDetailCell", forIndexPath: indexPath) as! TimeLineDetailTableViewCell
             cell.displayUpdate(replyArray[indexPath.row])
+            cell.replyButton.tag = indexPath.row
+            cell.replyButton.addTarget(self, action: "showReply:", forControlEvents: UIControlEvents.TouchUpInside)
             return cell
             
+        }
+    }
+    
+    //replyボタンの設定
+    func showReply(sender: UIButton){
+        if let vc = self.storyboard?.instantiateViewControllerWithIdentifier("PostCtrl")
+            as? PostController {
+                vc.receiver_post = postArray[sender.tag]
+                self.presentViewController(vc, animated: true, completion: nil)
         }
     }
     
