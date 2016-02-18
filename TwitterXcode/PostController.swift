@@ -10,8 +10,8 @@ import UIKit
 import AVFoundation
 
 class PostController: UIViewController, UITabBarDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
-    private var image_url:String = ""
+    
+    var image_url: String = ""
     private var latitude: Double?
     private var longitude: Double?
     
@@ -22,6 +22,7 @@ class PostController: UIViewController, UITabBarDelegate, UIImagePickerControlle
     
     //投稿する画像を選択する際に必要な処理をする
     private func setPhoto(imagePath: String){
+        //privateにしていると既にインスタンスが生成されているので、代入できない
         self.image_url = imagePath
         postIV.image = UIImage(named:imagePath)
         
@@ -45,22 +46,25 @@ class PostController: UIViewController, UITabBarDelegate, UIImagePickerControlle
             let longitude = self.longitude,
             let text = postTV.text {
                 let post = PostWrapper.getInstance(["text": text, "image_url": image_url, "latitude": latitude, "longitude": longitude])
-                if postIV.image != nil {
-                    //画像無しの場合
-                    PostDispatcher(post: post).upload{(result) -> Void in
-                        if result {
-                            print("テキストの投稿が完了しました")
-                        } else {
-                            print("テキストの投稿が失敗しました")
+                //正しく初期化されていないとnilを返している
+                if let post = post {
+                    if post.image_url != nil {
+                        //画像ありの場合
+                        PostDispatcher(post: post).uploadWithImage{(result) -> Void in
+                            if result {
+                                print("画像とテキストの投稿が完了しました")
+                            } else {
+                                print("画像とテキストの投稿が失敗しました")
+                            }
                         }
-                    }
-                } else {
-                    //画像無しの場合
-                    PostDispatcher(post: post).uploadWithImage{(result) -> Void in
-                        if result {
-                            print("画像とテキストの投稿が完了しました")
-                        } else {
-                            print("画像とテキストの投稿が失敗しました")
+                    } else {
+                        //画像無しの場合
+                        PostDispatcher(post: post).upload{(result) -> Void in
+                            if result {
+                                print("テキストの投稿が完了しました")
+                            } else {
+                                print("テキストの投稿が失敗しました")
+                            }
                         }
                     }
                 }

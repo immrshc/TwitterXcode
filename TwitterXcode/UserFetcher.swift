@@ -44,8 +44,7 @@ class UserFetcher {
             if result.isSuccess,
                 let res = result.value as? [String:AnyObject]{
                     //trueなら1, falseなら0になっている
-                    print(res)
-                    if res["result"]!.integerValue == 1 {
+                    if res["result"]?.integerValue == 1 {
                         //userDataをストレージに保存する
                         let userData = User(json: JSON(res))
                         self.saveUserData(userData)

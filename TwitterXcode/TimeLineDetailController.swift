@@ -12,11 +12,13 @@ import AVFoundation
 class TimeLineDetailController: UITableViewController {
     
     var postArray:[TimeLine] = []
+    var replyArray:[TimeLine] = []
     var refreshCtrl:UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("postArray[0]: \(postArray[0])")
         //タイムラインを非同期で取得する
         self.getTimeLine()
         
@@ -27,20 +29,22 @@ class TimeLineDetailController: UITableViewController {
     
     //タイムラインを非同期で取得する
     func getTimeLine(){
-        let post_token = postArray[0].post_token
-        TimeLineFetcher(post_token: post_token!).download { (items) -> Void in
-            self.postArray = items
-            self.tableView.reloadData()
+        if let post_token = postArray[0].post_token {
+            TimeLineFetcher(post_token: post_token).download { (items) -> Void in
+                self.replyArray = items
+                self.tableView.reloadData()
+            }
         }
     }
     
     //上に引っ張ると投稿をリロードする
     func refresh(){
-        let post_token = postArray[0].post_token
-        TimeLineFetcher(post_token: post_token!).download { (items) -> Void in
-            self.postArray = items
-            self.refreshCtrl.endRefreshing()
-            self.tableView.reloadData()
+        if let post_token = postArray[0].post_token {
+            TimeLineFetcher(post_token: post_token).download { (items) -> Void in
+                self.replyArray = items
+                self.tableView.reloadData()
+                self.refreshCtrl.endRefreshing()
+            }
         }
     }
     
@@ -54,27 +58,62 @@ class TimeLineDetailController: UITableViewController {
     
     //セクション数を指定する
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 2
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return nil
+        } else {
+            if replyArray.count != 0 {
+                return "Reply"
+            } else {
+                return nil
+            }
+        }
     }
     
     //セルの数を指定する
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return postArray.count
+        if section == 0 {
+            return postArray.count
+        } else if section == 1 {
+            return replyArray.count
+        } else {
+            return 0
+        }
     }
     
     //セルを生成する
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TimeLineDetailCell", forIndexPath: indexPath) as! TimeLineDetailTableViewCell
-        cell.displayUpdate(postArray[indexPath.row])
-        return cell
+        if indexPath.section == 0 {
+            
+            let cell = tableView.dequeueReusableCellWithIdentifier("TimeLineDetailCell", forIndexPath: indexPath) as! TimeLineDetailTableViewCell
+            cell.displayUpdate(postArray[indexPath.row])
+            return cell
+            
+        } else {
+            
+            let cell = tableView.dequeueReusableCellWithIdentifier("TimeLineDetailCell", forIndexPath: indexPath) as! TimeLineDetailTableViewCell
+            cell.displayUpdate(replyArray[indexPath.row])
+            return cell
+            
+        }
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let font = UIFont(name: "Times New Roman", size: 14)!
-        let text_height = postArray[indexPath.row].heightForComment(font, width: self.getContentWidth())
-        let photo_height = self.calculatePhotoHeight(postArray[indexPath.row])
-        let other_height = CGFloat(130)
-        return other_height + text_height + photo_height
+        if indexPath.section == 0 {
+            let text_height = postArray[indexPath.row].heightForComment(font, width: self.getContentWidth())
+            let photo_height = self.calculatePhotoHeight(postArray[indexPath.row])
+            let other_height = CGFloat(130)
+            return other_height + text_height + photo_height
+        } else {
+            let text_height = replyArray[indexPath.row].heightForComment(font, width: self.getContentWidth())
+            let photo_height = self.calculatePhotoHeight(replyArray[indexPath.row])
+            let other_height = CGFloat(130)
+            return other_height + text_height + photo_height
+        }
     }
     
     private func calculatePhotoHeight(post: TimeLine) -> CGFloat {
@@ -91,6 +130,5 @@ class TimeLineDetailController: UITableViewController {
     private func getContentWidth() -> CGFloat {
         return CGFloat(self.tableView.bounds.width - 16)
     }
-
 
 }

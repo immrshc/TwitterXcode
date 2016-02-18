@@ -57,7 +57,6 @@ class TimeLineDetailTableViewCell: UITableViewCell {
         
         //お気に入りボタンの更新処理を設定する
         favoriteButton.addTarget(self, action: "favoriteUpdate:", forControlEvents: UIControlEvents.TouchUpInside)
-        self.addSubview(favoriteButton)
         
         //お気に入りボタンの初期状態の設定
         favoriteCountLabel.text = String(post!.favorite_count)

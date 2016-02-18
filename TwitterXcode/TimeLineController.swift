@@ -23,7 +23,6 @@ class TimeLineController: UITableViewController {
         
         //タイムラインを非同期で取得する
         self.getTimeLine()
-        
         //上に引っ張るとリロードされる動作の設定
         self.refreshControl()
 
@@ -79,7 +78,7 @@ class TimeLineController: UITableViewController {
         return cell
     }
     
-    //ここの調整が必要
+    //
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let font = UIFont(name: "Times New Roman", size: 14)!
         let text_height = postArray[indexPath.row].heightForComment(font, width: self.getContentWidth())

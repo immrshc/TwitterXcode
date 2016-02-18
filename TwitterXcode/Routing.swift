@@ -26,7 +26,7 @@ enum Routing {
         //全てのタイムラインの表示
         case TimeLine = "/timeline/show.json"
         //投稿に紐付いた返信の投稿を表示
-        case Reply = "/timeline/show_reply.json"
+        case Reply = "/timeline/show/reply.json"
         //自分の投稿の表示
         case MyPost = "/timeline/show/mypost.json"
         //お気に入りの投稿の表示

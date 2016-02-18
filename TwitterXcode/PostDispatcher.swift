@@ -50,7 +50,7 @@ class PostDispatcher {
                 Alamofire.request(.POST, postURL, parameters: params).responseJSON{_, _, result in
                     if result.isSuccess,
                         let res = result.value as? [String:AnyObject]{
-                            if res["result"]!.intValue == 1 {
+                            if res["result"]?.intValue == 1 {
                                 callback(true)
                             } else {
                                 callback(false)
@@ -89,7 +89,7 @@ class PostDispatcher {
                     upload.responseJSON { _, _, result in
                         if result.isSuccess,
                             let res = result.value as? [String:AnyObject]{
-                                if res["result"]!.intValue == 1 {
+                                if res["result"]?.intValue == 1 {
                                     callback(true)
                                 } else {
                                     callback(false)

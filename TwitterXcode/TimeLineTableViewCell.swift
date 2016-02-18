@@ -34,8 +34,6 @@ class TimeLineTableViewCell: UITableViewCell {
         postTV.text = post!.text
         let font = UIFont(name: "Times New Roman", size: 14)!
         postTextHeight.constant = timeline.heightForComment(font, width: postTV.bounds.width)
-        print("postTextHeight.constant: \(postTextHeight.constant)")
-
         
         //アスペクト比に応じた写真の高さを取得して、セルの写真の高さにする
         if let imageURL = post?.image_info?.url {
@@ -53,8 +51,7 @@ class TimeLineTableViewCell: UITableViewCell {
         
         //お気に入りボタンの更新処理を設定する
         favoriteButton.addTarget(self, action: "favoriteUpdate:", forControlEvents: UIControlEvents.TouchUpInside)
-        self.addSubview(favoriteButton)
-        
+
         //お気に入りボタンの初期状態の設定
         favoriteCountLabel.text = String(post!.favorite_count)
         if post!.favorite_check {

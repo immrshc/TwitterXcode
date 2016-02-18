@@ -24,7 +24,7 @@ class TimeLineFetcher {
         baseURL = Routing.TimeLine.TimeLine.getURL()
     }
     
-    //postTokenに紐付いた投稿と、それに対する返信の投稿の配列を取る
+    //postTokenに紐付いた投稿に対する返信の投稿の配列を取る
     init(post_token: String){
         defaultParameter = ["post":["post_token": post_token]]
         baseURL = Routing.TimeLine.Reply.getURL()

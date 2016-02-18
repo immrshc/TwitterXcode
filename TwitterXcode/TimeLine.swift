@@ -86,9 +86,6 @@ class TimeLineWrapper {
             longitude: json["longitude"].doubleValue
         )
         
-        print("self.getImageURL(json): \(self.getImageURL(json))")
-        print("self.getImageSize(json): \(self.getImageSize(json))")
-        
         return timeLine
     }
     

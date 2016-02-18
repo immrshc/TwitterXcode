@@ -37,7 +37,7 @@ class Post {
 
 class PostWrapper {
     
-    static func getInstance(args:[String:AnyObject]) -> Post {
+    static func getInstance(args:[String:AnyObject]) -> Post? {
         
         if let text = args["text"] as? String,
             let latitude = args["latitude"] as? Double,
@@ -47,14 +47,15 @@ class PostWrapper {
                 return post
         } else {
             print("Postの初期化に失敗しました")
-            return Post(text: "", image_url: "", latitude: 0.0, longitude: 0.0)
+            return nil
         }
     }
     
     //画像がない場合の""をnilにする
-    private static func setImageURL(args:[String:AnyObject]) -> String? {
-        if args["image_url"]?.stringValue.utf16.count != 0 {
-            return args["image_url"]?.stringValue
+    private static func setImageURL(args: [String:AnyObject]) -> String? {
+        //""か、値を持った文字列のどちらかが入る
+        if let image_url = args["image_url"] as? String where image_url != "" {
+            return image_url
         } else {
             return nil
         }
