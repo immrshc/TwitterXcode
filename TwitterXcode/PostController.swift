@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class PostController: UIViewController, UITabBarDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -23,12 +24,15 @@ class PostController: UIViewController, UITabBarDelegate, UIImagePickerControlle
     private func setPhoto(imagePath: String){
         self.image_url = imagePath
         postIV.image = UIImage(named:imagePath)
-        if let height = postIV.image?.size.height {
-            if height <= CGFloat(190) {
-                self.photoHeight.constant = height
-            } else {
-                self.photoHeight.constant = CGFloat(190)
-            }
+        
+        if let photoSize = postIV.image?.size {
+            //写真を当てはめる枠となる領域
+            let boundingRect =  CGRect(x: 0, y: 0, width: CGFloat(self.view.bounds.width - 140), height: CGFloat(self.view.bounds.height - 282))
+            //枠となる領域にAspectRatioで写真を当てはめた時の写真の領域を返す
+            let rect  = AVMakeRectWithAspectRatioInsideRect(photoSize, boundingRect)
+            photoHeight.constant = rect.size.height
+        } else {
+            photoHeight.constant = CGFloat(0)
         }
     }
     

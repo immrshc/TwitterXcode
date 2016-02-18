@@ -39,7 +39,6 @@ class TimeLineFetcher {
                         let post = TimeLineWrapper().getInstance(JSON(posts[i]))
                         postArray.append(post)
                     }
-                    print(postArray)
                     callback(postArray)
             } else {
                 callback([])

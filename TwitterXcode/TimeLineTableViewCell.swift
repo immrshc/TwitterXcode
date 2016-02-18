@@ -15,7 +15,7 @@ class TimeLineTableViewCell: UITableViewCell {
     @IBOutlet weak var userIV: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var searchUserIdButton: UIButton!
-    @IBOutlet weak var postTV: UITextView!
+    @IBOutlet weak var postTV: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var favoriteCountLabel: UILabel!
     @IBOutlet weak var retweetButton: UIButton!
@@ -34,12 +34,13 @@ class TimeLineTableViewCell: UITableViewCell {
         postTV.text = post!.text
         let font = UIFont(name: "Times New Roman", size: 14)!
         postTextHeight.constant = timeline.heightForComment(font, width: postTV.bounds.width)
-        print("postHeight.constant: \(postTextHeight.constant)")
+        print("postTextHeight.constant: \(postTextHeight.constant)")
 
+        
         //アスペクト比に応じた写真の高さを取得して、セルの写真の高さにする
         if let imageURL = post?.image_info?.url {
             postIV.sd_setImageWithURL(NSURL(string: imageURL))
-            let boundingRect =  CGRect(x: 0, y: 0, width: postIV.bounds.width, height: CGFloat(MAXFLOAT))
+            let boundingRect =  CGRect(x: 0, y: 0, width: postIV.bounds.width, height: CGFloat(300))
             let rect  = AVMakeRectWithAspectRatioInsideRect(postIV.bounds.size, boundingRect)
             postImageHeight.constant = rect.size.height
         } else {

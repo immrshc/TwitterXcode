@@ -79,14 +79,13 @@ class TimeLineController: UITableViewController {
         return cell
     }
     
+    //ここの調整が必要
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TimeLineCell", forIndexPath: indexPath) as! TimeLineTableViewCell
         let font = UIFont(name: "Times New Roman", size: 14)!
-        let label_height = cell.userNameLabel.bounds.height
-        let text_height = postArray[indexPath.row].heightForComment(font, width: cell.postTV.bounds.width)
+        let text_height = postArray[indexPath.row].heightForComment(font, width: self.getContentWidth())
         let photo_height = self.calculatePhotoHeight(postArray[indexPath.row])
-        let padding_height = CGFloat(62)
-        return label_height + text_height + photo_height + padding_height
+        let other_height = CGFloat(87)
+        return text_height + photo_height + other_height
     }
     
     //詳細画面へ遷移する
@@ -99,11 +98,18 @@ class TimeLineController: UITableViewController {
     
     private func calculatePhotoHeight(post: TimeLine) -> CGFloat {
         if let photo_size:CGSize = post.image_info?.size {
-            let boundingRect =  CGRect(x: 0, y: 0, width: photo_size.width, height: CGFloat(MAXFLOAT))
+            //写真を当てはめる枠となる領域
+            let boundingRect =  CGRect(x: 0, y: 0, width: self.getContentWidth(), height: 300)
+            //枠となる領域にAspectRatioで写真を当てはめた時の写真の領域を返す
             let rect  = AVMakeRectWithAspectRatioInsideRect(photo_size, boundingRect)
             return rect.size.height
         } else {
             return CGFloat(0)
         }
+    }
+    
+    //写真の幅、およびラベルの幅を返す
+    private func getContentWidth() -> CGFloat {
+        return CGFloat(self.tableView.bounds.width - 56)
     }
 }

@@ -15,7 +15,7 @@ class TimeLineDetailTableViewCell: UITableViewCell {
     @IBOutlet weak var userIV: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var searchUserIdButton: UIButton!
-    @IBOutlet weak var postTV: UITextView!
+    @IBOutlet weak var postTV: UILabel!
     @IBOutlet weak var postIV: UIImageView!
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var favoriteCountLabel: UILabel!

@@ -70,9 +70,8 @@ class TimeLineDetailController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TimeLineDetailCell", forIndexPath: indexPath) as! TimeLineDetailTableViewCell
         let font = UIFont(name: "Times New Roman", size: 14)!
-        let text_height = postArray[indexPath.row].heightForComment(font, width: cell.postTV.bounds.width)
+        let text_height = postArray[indexPath.row].heightForComment(font, width: self.getContentWidth())
         let photo_height = self.calculatePhotoHeight(postArray[indexPath.row])
         let other_height = CGFloat(130)
         return other_height + text_height + photo_height
@@ -80,12 +79,17 @@ class TimeLineDetailController: UITableViewController {
     
     private func calculatePhotoHeight(post: TimeLine) -> CGFloat {
         if let photo_size:CGSize = post.image_info?.size {
-            let boundingRect =  CGRect(x: 0, y: 0, width: photo_size.width, height: CGFloat(MAXFLOAT))
+            let boundingRect =  CGRect(x: 0, y: 0, width: self.getContentWidth(), height: CGFloat(MAXFLOAT))
             let rect  = AVMakeRectWithAspectRatioInsideRect(photo_size, boundingRect)
             return rect.size.height
         } else {
             return CGFloat(0)
         }
+    }
+    
+    //写真の幅、およびラベルの幅を返す
+    private func getContentWidth() -> CGFloat {
+        return CGFloat(self.tableView.bounds.width - 16)
     }
 
 
