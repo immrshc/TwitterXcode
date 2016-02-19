@@ -19,7 +19,7 @@ class TimeLineTableViewCell: UITableViewCell {
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var favoriteCountLabel: UILabel!
     @IBOutlet weak var retweetButton: UIButton!
-    @IBOutlet weak var retweetCountLabe: UILabel!
+    @IBOutlet weak var retweetCountLabel: UILabel!
     @IBOutlet weak var replyButton: UIButton!
     @IBOutlet weak var postTextHeight: NSLayoutConstraint!
     @IBOutlet weak var postIV: UIImageView!
@@ -53,12 +53,24 @@ class TimeLineTableViewCell: UITableViewCell {
         //お気に入りボタンの更新処理を設定する
         favoriteButton.addTarget(self, action: "favoriteUpdate:", forControlEvents: UIControlEvents.TouchUpInside)
         
+        //
+        retweetButton.addTarget(self, action: "retweetUpdate:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        
         //お気に入りボタンの初期状態の設定
         favoriteCountLabel.text = String(post!.favorite_count)
         if post!.favorite_check {
             favoriteButton.setTitleColor(UIColor.yellowColor(), forState: .Normal)
         } else {
             favoriteButton.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
+        }
+        
+        //リツイートボタンの初期状態の設定
+        retweetCountLabel.text = String(post!.retweet_count)
+        if post!.retweet_check {
+            retweetButton.setTitleColor(UIColor.greenColor(), forState: .Normal)
+        } else {
+            retweetButton.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
         }
     }
     
@@ -68,12 +80,56 @@ class TimeLineTableViewCell: UITableViewCell {
             //お気に入りボタンが押されると色を変える
             if post.favorite_check == false {
                 favoriteButton.setTitleColor(UIColor.yellowColor(), forState: .Normal)
+                //
+                ResponseHandler(post: self.post!).addFavorite { (result) -> Void in
+                    print("result: \(result)")
+                    if result == true {
+                        print("")
+                    }
+                }
             } else {
                 favoriteButton.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
+                //
+                ResponseHandler(post: self.post!).subtractFavorite { (result) -> Void in
+                    if result == true {
+                        print("")
+                    }
+                }
             }
             //お気に入り状態とお気に入り数を変更する
             post.changeFavoriteState()
             favoriteCountLabel.text = String(post.favorite_count)
         }
+        
+        
+    }
+    
+    //リツイートボタンの処理
+    func retweetUpdate(sender: UIButton){
+        if let post:TimeLine = post {
+            //お気に入りボタンが押されると色を変える
+            if post.retweet_check == false {
+                retweetButton.setTitleColor(UIColor.greenColor(), forState: .Normal)
+                //
+                ResponseHandler(post: self.post!).addRetweet { (result) -> Void in
+                    if result == true {
+                        print("")
+                    }
+                }
+            } else {
+                retweetButton.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
+                //
+                ResponseHandler(post: self.post!).subtractRetweet { (result) -> Void in
+                    if result == true {
+                        print("")
+                    }
+                }
+            }
+            //リツイート状態とリツイート数を変更する
+            post.changeRetweetState()
+            retweetCountLabel.text = String(post.retweet_count)
+        }
+        
+        
     }
 }

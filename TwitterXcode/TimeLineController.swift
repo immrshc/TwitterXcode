@@ -79,7 +79,7 @@ class TimeLineController: UITableViewController {
         cell.replyButton.addTarget(self, action: "showReply:", forControlEvents: UIControlEvents.TouchUpInside)
         return cell
     }
-    
+        
     //replyボタンの設定
     func showReply(sender: UIButton){
         if let vc = self.storyboard?.instantiateViewControllerWithIdentifier("PostCtrl")

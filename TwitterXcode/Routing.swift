@@ -45,4 +45,19 @@ enum Routing {
             return Routing.Base.Host.rawValue + self.rawValue
         }
     }
+    
+    enum Response: String {
+        //お気に入り情報の追加
+        case AddFavorite = "/timeline/favorite/add.json"
+        //お気に入り情報の削除
+        case SubtractFavorite = "/timeline/favorite/subtract.json"
+        //リツイート情報の追加
+        case AddRetweet = "/timeline/retweet/add.json"
+        //リツイート情報の削除
+        case SubtractRetweet = "/timeline/retweet/subtract.json"
+        
+        func getURL() -> String  {
+            return Routing.Base.Host.rawValue + self.rawValue
+        }
+    }
 }

@@ -27,10 +27,15 @@ class TimeLine {
     private (set) var favorite_check:Bool = false
     private (set) var favorite_count:Int = 0
     
+    private (set) var retweet_check:Bool = false
+    private (set) var retweet_count:Int = 0
+    
     init(
             post_token: String,
             favorite_check: Bool,
             favorite_count: Int,
+            retweet_check: Bool,
+            retweet_count: Int,
             username: String,
             icon_image_url: String,
             text: String,
@@ -42,6 +47,8 @@ class TimeLine {
             self.post_token = post_token
             self.favorite_check = favorite_check
             self.favorite_count = favorite_count
+            self.retweet_check = retweet_check
+            self.retweet_count = retweet_count
             self.username = username
             self.icon_image_url = icon_image_url
             self.text = text
@@ -58,6 +65,16 @@ class TimeLine {
             self.favorite_count += 1
         }
         self.favorite_check = !self.favorite_check
+    }
+    
+    //リツイート状態の切り替え
+    func changeRetweetState(){
+        if self.retweet_check == true {
+            self.retweet_count -= 1
+        } else {
+            self.retweet_count += 1
+        }
+        self.retweet_check = !self.retweet_check
     }
     
     //投稿文のラベルの高さを返す
@@ -77,6 +94,8 @@ class TimeLineWrapper {
             post_token: json["post"]["post_token"].stringValue,
             favorite_check: json["favorite_state"].boolValue,
             favorite_count: json["favorite_count"].intValue,
+            retweet_check: json["retweet_state"].boolValue,
+            retweet_count: json["retweet_count"].intValue,
             username: json["user"]["username"].stringValue,
             icon_image_url: json["user"]["icon_image_url"].stringValue,
             text: json["post"]["text"].stringValue,
