@@ -13,6 +13,8 @@ class AccountController: UITableViewController {
 
     var postArray:[TimeLine] = []
     var refreshCtrl:UIRefreshControl!
+    var user_token:String?
+    private let app = UIApplication.sharedApplication().delegate as! AppDelegate
     private var selectedIndex:NSInteger! = 0
     
     @IBAction func showPostView(sender: AnyObject) {
@@ -42,15 +44,27 @@ class AccountController: UITableViewController {
     
     //タイムラインを非同期で取得する
     func getTimeLine(){
-        TimeLineFetcher(selected_index: selectedIndex).download { (items) -> Void in
+        
+        TimeLineFetcher(user_token: self.getUserToken(), selected_index: selectedIndex).download { (items) -> Void in
             self.postArray = items
             self.tableView?.reloadData()
         }
     }
     
+    private func getUserToken() -> String {
+        if let user_token = user_token {
+            return user_token
+        } else if let initial_user_token = app.sharedUserData["user_token"] as? String {
+            return initial_user_token
+        } else {
+            print("誰のUser_tokenも取得でいませんでした")
+            return ""
+        }
+    }
+    
     //上に引っ張ると投稿をリロードする
     func refresh(){
-        TimeLineFetcher(selected_index: selectedIndex).download { (items) -> Void in
+        TimeLineFetcher(user_token: self.getUserToken(), selected_index: selectedIndex).download { (items) -> Void in
             self.postArray = items
             self.refreshCtrl.endRefreshing()
             self.tableView?.reloadData()
@@ -80,15 +94,42 @@ class AccountController: UITableViewController {
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = self.tableView.dequeueReusableHeaderFooterViewWithIdentifier("AccountHeader")
         let header = cell as! AccountHeaderView
-        //header.displayUpdate()
+        //header.displayUpdate(user_token)
         header.selectPostButton.addTarget(self, action: "postUpdate:", forControlEvents: UIControlEvents.ValueChanged)
+        header.followingButton.addTarget(self, action: "showFollow:", forControlEvents: UIControlEvents.ValueChanged)
+        header.followerButton.addTarget(self, action: "showFollow:", forControlEvents: UIControlEvents.ValueChanged)
         return header
     }
     
+    func showFollow(sender: UIButton){
+        if let vc = self.storyboard?.instantiateViewControllerWithIdentifier("UserListCtrl")
+            as? UserListController {
+                vc.user_token = self.getUserToken()
+                if sender.tag == 0 {
+                    vc.following_check = true
+                    self.presentViewController(vc, animated: true, completion: nil)
+                } else if sender.tag == 1 {
+                    vc.following_check = false
+                    self.presentViewController(vc, animated: true, completion: nil)
+                } else {
+                    print("タグが認識されていない")
+                }
+                
+        }
+    }
+    
+    func showFollowed(sender: UIButton){
+        if let vc = self.storyboard?.instantiateViewControllerWithIdentifier("UserListCtrl")
+            as? UserListController {
+                vc.user_token = self.getUserToken()
+                self.presentViewController(vc, animated: true, completion: nil)
+        }
+    }
+
     //選択されたタブのインデックスで表示を変更する
     func postUpdate(segcon: UISegmentedControl){
         self.selectedIndex = segcon.selectedSegmentIndex
-        TimeLineFetcher(selected_index: selectedIndex).download { (items) -> Void in
+        TimeLineFetcher(user_token: self.getUserToken(), selected_index: selectedIndex).download { (items) -> Void in
             self.postArray = items
             self.tableView?.reloadData()
         }

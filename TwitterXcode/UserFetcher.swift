@@ -39,6 +39,35 @@ class UserFetcher {
         self.baseURL = Routing.Auth.SignUp.getURL()
     }
     
+    init(user_token: String){
+        self.defaultParameter = [
+            "user": [
+                "user_token": user_token
+            ]
+        ]
+        self.baseURL = Routing.Account.MySelf.getURL()
+    }
+    
+    //
+    init(user_token: String, following_check: Bool){
+        self.defaultParameter = [
+            "user": [
+                "user_token": user_token
+            ]
+        ]
+        self.setURL(following_check)
+    }
+    
+    private func setURL(following_check: Bool) -> Void {
+        if following_check == true {
+            //
+            self.baseURL = Routing.Account.Following.getURL()
+        } else {
+            //
+            self.baseURL = Routing.Account.Follower.getURL()
+        }
+    }
+    
     func download(callback:(Bool)->Void){
         Alamofire.request(.POST, baseURL, parameters: defaultParameter).responseJSON {_, _, result in
             if result.isSuccess,
@@ -50,6 +79,23 @@ class UserFetcher {
                         self.saveUserData(userData)
                         callback(true)
                     }
+            }
+        }
+    }
+    
+    func userDownload(callback:([User])->Void){
+        Alamofire.request(.POST, baseURL!, parameters: defaultParameter).responseJSON{_, _, result in
+            if result.isSuccess,
+                let users = result.value as? [AnyObject]{
+                    var userArray:[User] = []
+                    for var i = 0; i < users.count; i++ {
+                        let user = User(json: JSON(users[i]))
+                        userArray.append(user)
+                    }
+                    callback(userArray)
+            } else {
+                callback([])
+                print("Tokenが間違っています")
             }
         }
     }

@@ -33,13 +33,9 @@
                             <rect key="frame" x="142" y="8" width="450" height="30"/>
                             <state key="normal" title="Button"/>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8IX-IO-oUc">
-                            <rect key="frame" x="94" y="46" width="46" height="30"/>
-                            <state key="normal" title="Button"/>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnk-rh-Qda">
-                            <rect key="frame" x="148" y="46" width="46" height="30"/>
-                            <state key="normal" title="Button"/>
+                            <rect key="frame" x="162" y="46" width="75" height="30"/>
+                            <state key="normal" title="フォロワー"/>
                         </button>
                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="y12-l7-tOC">
                             <rect key="frame" x="-3" y="570" width="606" height="31"/>
@@ -51,6 +47,10 @@
                                 <segment title="MyFavorite"/>
                             </segments>
                         </segmentedControl>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8IX-IO-oUc">
+                            <rect key="frame" x="94" y="46" width="60" height="30"/>
+                            <state key="normal" title="フォロー"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <constraints>
@@ -80,8 +80,8 @@
                 <constraint firstItem="dfX-ma-28G" firstAttribute="leading" secondItem="oeA-5o-799" secondAttribute="leading" id="qg8-dn-14U"/>
             </constraints>
             <connections>
-                <outlet property="follewingButton" destination="8IX-IO-oUc" id="WM0-Tg-DmT"/>
-                <outlet property="followerButton" destination="nnk-rh-Qda" id="ivN-kK-QGD"/>
+                <outlet property="followerButton" destination="nnk-rh-Qda" id="bfo-Le-xwd"/>
+                <outlet property="followingButton" destination="8IX-IO-oUc" id="SM3-kT-Sy0"/>
                 <outlet property="iconIV" destination="TRR-s8-jq3" id="ojU-5e-HRz"/>
                 <outlet property="searchUserIdButton" destination="Wlb-VE-z43" id="kst-rO-Y5j"/>
                 <outlet property="selectPostButton" destination="y12-l7-tOC" id="AXz-0D-eFc"/>

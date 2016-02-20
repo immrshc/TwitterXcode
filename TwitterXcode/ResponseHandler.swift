@@ -55,7 +55,6 @@ class ResponseHandler {
                 let res = result.value as? [String:AnyObject]{
                     //trueなら1, falseなら0になっている
                     if res["result"]?.integerValue == 1 {
-                        //userDataをストレージに保存する
                         callback(true)
                     } else {
                         callback(false)

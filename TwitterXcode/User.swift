@@ -14,7 +14,9 @@ class User {
     private (set) var user_identifier: String
     private (set) var username: String
     private (set) var icon_image_url: String
-    //private (set) var follower
+    private (set) var following_state: Bool = false
+    private (set) var following_count: Int = 0
+    private (set) var follower_count: Int = 0
     
     init(json:JSON){
         self.user_token = json["user_token"].stringValue

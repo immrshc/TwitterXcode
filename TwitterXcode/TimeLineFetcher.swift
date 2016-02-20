@@ -30,12 +30,16 @@ class TimeLineFetcher {
         baseURL = Routing.TimeLine.Reply.getURL()
     }
     
-    convenience init(selected_index: NSInteger){
-        self.init()
+    //user_tokenに紐付いた投稿の配列を取る
+    init(user_token: String, selected_index: NSInteger){
+        defaultParameter = [
+            "user":[
+                "user_token":user_token
+            ]
+        ]
         self.setURL(selected_index)
-        print("self.baseURL: \(self.baseURL)")
     }
-    
+        
     private func setURL(segmentIndex:NSInteger) -> Void {
         switch segmentIndex {
         case 0:

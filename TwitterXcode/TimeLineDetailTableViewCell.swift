@@ -50,7 +50,6 @@ class TimeLineDetailTableViewCell: UITableViewCell {
             photoHeight.constant = CGFloat(0)
         }
         
-        
         //ユーザのアイコン画像を設定する
         //userIV.sd_setImageWithURL(NSURL(string: (post?.icon_image_url)!))
         userIV.sd_setImageWithURL(NSURL(string: "TwitterIcon.png"))

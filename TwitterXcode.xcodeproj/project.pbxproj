@@ -14,7 +14,6 @@
 		E2B20FFB1C7277F80079D782 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B20FFA1C7277F80079D782 /* User.swift */; };
 		E2B20FFD1C72782B0079D782 /* UserFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B20FFC1C72782B0079D782 /* UserFetcher.swift */; };
 		E2B20FFF1C7278B30079D782 /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B20FFE1C7278B30079D782 /* Routing.swift */; };
-		E2B270E11C7204210025B7F6 /* UserDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B270E01C7204210025B7F6 /* UserDetailTableViewCell.swift */; };
 		E2B270E31C7204900025B7F6 /* AccountHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B270E21C7204900025B7F6 /* AccountHeaderView.swift */; };
 		E2B270E81C720B540025B7F6 /* TwitterIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B270E71C720B540025B7F6 /* TwitterIcon.png */; };
 		E2B270EC1C72182B0025B7F6 /* TimeLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B270EB1C72182B0025B7F6 /* TimeLineTableViewCell.swift */; };
@@ -25,6 +24,8 @@
 		E2B4E5BA1C73148E003F3FD9 /* TimeLineFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B4E5B91C73148E003F3FD9 /* TimeLineFetcher.swift */; };
 		E2BCE9CD1C78408B00617E55 /* AccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BCE9CC1C78408B00617E55 /* AccountController.swift */; };
 		E2BCE9D11C7854C800617E55 /* AccountHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2BCE9D01C7854C800617E55 /* AccountHeader.xib */; };
+		E2CA91C61C78ACC300864204 /* UserListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CA91C51C78ACC300864204 /* UserListController.swift */; };
+		E2CA91C81C78ACE600864204 /* UserListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CA91C71C78ACE600864204 /* UserListTableViewCell.swift */; };
 		E2ED4FF61C71B5C50000E5F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED4FF51C71B5C50000E5F3 /* AppDelegate.swift */; };
 		E2ED4FF81C71B5C50000E5F3 /* TopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED4FF71C71B5C50000E5F3 /* TopController.swift */; };
 		E2ED4FFB1C71B5C50000E5F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2ED4FF91C71B5C50000E5F3 /* Main.storyboard */; };
@@ -67,7 +68,6 @@
 		E2B20FFA1C7277F80079D782 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E2B20FFC1C72782B0079D782 /* UserFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFetcher.swift; sourceTree = "<group>"; };
 		E2B20FFE1C7278B30079D782 /* Routing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routing.swift; sourceTree = "<group>"; };
-		E2B270E01C7204210025B7F6 /* UserDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailTableViewCell.swift; sourceTree = "<group>"; };
 		E2B270E21C7204900025B7F6 /* AccountHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountHeaderView.swift; sourceTree = "<group>"; };
 		E2B270E71C720B540025B7F6 /* TwitterIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TwitterIcon.png; sourceTree = "<group>"; };
 		E2B270EB1C72182B0025B7F6 /* TimeLineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineTableViewCell.swift; sourceTree = "<group>"; };
@@ -79,6 +79,8 @@
 		E2B4E5BC1C733477003F3FD9 /* TwitterXcode-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TwitterXcode-Bridging-Header.h"; sourceTree = "<group>"; };
 		E2BCE9CC1C78408B00617E55 /* AccountController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountController.swift; sourceTree = "<group>"; };
 		E2BCE9D01C7854C800617E55 /* AccountHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountHeader.xib; sourceTree = "<group>"; };
+		E2CA91C51C78ACC300864204 /* UserListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListController.swift; sourceTree = "<group>"; };
+		E2CA91C71C78ACE600864204 /* UserListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListTableViewCell.swift; sourceTree = "<group>"; };
 		E2ED4FF21C71B5C50000E5F3 /* TwitterXcode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterXcode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2ED4FF51C71B5C50000E5F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2ED4FF71C71B5C50000E5F3 /* TopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopController.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				E2ED50391C71D1C10000E5F3 /* TimeLineDetailController.swift */,
 				E2BCE9CC1C78408B00617E55 /* AccountController.swift */,
 				E2B270EF1C723C670025B7F6 /* PostController.swift */,
+				E2CA91C51C78ACC300864204 /* UserListController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -244,7 +247,7 @@
 			children = (
 				E2B270EB1C72182B0025B7F6 /* TimeLineTableViewCell.swift */,
 				E2ED50371C71D0460000E5F3 /* TimeLineDetailTableViewCell.swift */,
-				E2B270E01C7204210025B7F6 /* UserDetailTableViewCell.swift */,
+				E2CA91C71C78ACE600864204 /* UserListTableViewCell.swift */,
 				E2B270E21C7204900025B7F6 /* AccountHeaderView.swift */,
 			);
 			name = View;
@@ -452,9 +455,10 @@
 				E2BCE9CD1C78408B00617E55 /* AccountController.swift in Sources */,
 				E2B20FFB1C7277F80079D782 /* User.swift in Sources */,
 				E2ED50301C71CF770000E5F3 /* SignInController.swift in Sources */,
-				E2B270E11C7204210025B7F6 /* UserDetailTableViewCell.swift in Sources */,
 				E2B270F01C723C670025B7F6 /* PostController.swift in Sources */,
+				E2CA91C81C78ACE600864204 /* UserListTableViewCell.swift in Sources */,
 				E2ED4FF81C71B5C50000E5F3 /* TopController.swift in Sources */,
+				E2CA91C61C78ACC300864204 /* UserListController.swift in Sources */,
 				E2B20FFF1C7278B30079D782 /* Routing.swift in Sources */,
 				E2ED4FF61C71B5C50000E5F3 /* AppDelegate.swift in Sources */,
 				E2B4E5BA1C73148E003F3FD9 /* TimeLineFetcher.swift in Sources */,
