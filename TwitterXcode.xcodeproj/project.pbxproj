@@ -23,6 +23,8 @@
 		E2B4E5B41C72F149003F3FD9 /* PostDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B4E5B31C72F149003F3FD9 /* PostDispatcher.swift */; };
 		E2B4E5B81C731474003F3FD9 /* TimeLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B4E5B71C731474003F3FD9 /* TimeLine.swift */; };
 		E2B4E5BA1C73148E003F3FD9 /* TimeLineFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B4E5B91C73148E003F3FD9 /* TimeLineFetcher.swift */; };
+		E2BCE9CD1C78408B00617E55 /* AccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BCE9CC1C78408B00617E55 /* AccountController.swift */; };
+		E2BCE9D11C7854C800617E55 /* AccountHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2BCE9D01C7854C800617E55 /* AccountHeader.xib */; };
 		E2ED4FF61C71B5C50000E5F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED4FF51C71B5C50000E5F3 /* AppDelegate.swift */; };
 		E2ED4FF81C71B5C50000E5F3 /* TopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED4FF71C71B5C50000E5F3 /* TopController.swift */; };
 		E2ED4FFB1C71B5C50000E5F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2ED4FF91C71B5C50000E5F3 /* Main.storyboard */; };
@@ -30,7 +32,6 @@
 		E2ED50001C71B5C50000E5F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2ED4FFE1C71B5C50000E5F3 /* LaunchScreen.storyboard */; };
 		E2ED500B1C71B5C50000E5F3 /* TwitterXcodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED500A1C71B5C50000E5F3 /* TwitterXcodeTests.swift */; };
 		E2ED50161C71B5C50000E5F3 /* TwitterXcodeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED50151C71B5C50000E5F3 /* TwitterXcodeUITests.swift */; };
-		E2ED50281C71C2E30000E5F3 /* AccountHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2ED50271C71C2E30000E5F3 /* AccountHeader.xib */; };
 		E2ED50301C71CF770000E5F3 /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED502F1C71CF770000E5F3 /* SignInController.swift */; };
 		E2ED50321C71CFAF0000E5F3 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED50311C71CFAF0000E5F3 /* SignUpController.swift */; };
 		E2ED50341C71CFE50000E5F3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED50331C71CFE50000E5F3 /* TabBarController.swift */; };
@@ -76,6 +77,8 @@
 		E2B4E5B71C731474003F3FD9 /* TimeLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLine.swift; sourceTree = "<group>"; };
 		E2B4E5B91C73148E003F3FD9 /* TimeLineFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineFetcher.swift; sourceTree = "<group>"; };
 		E2B4E5BC1C733477003F3FD9 /* TwitterXcode-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TwitterXcode-Bridging-Header.h"; sourceTree = "<group>"; };
+		E2BCE9CC1C78408B00617E55 /* AccountController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountController.swift; sourceTree = "<group>"; };
+		E2BCE9D01C7854C800617E55 /* AccountHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountHeader.xib; sourceTree = "<group>"; };
 		E2ED4FF21C71B5C50000E5F3 /* TwitterXcode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterXcode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2ED4FF51C71B5C50000E5F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2ED4FF71C71B5C50000E5F3 /* TopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopController.swift; sourceTree = "<group>"; };
@@ -89,7 +92,6 @@
 		E2ED50111C71B5C50000E5F3 /* TwitterXcodeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwitterXcodeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2ED50151C71B5C50000E5F3 /* TwitterXcodeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterXcodeUITests.swift; sourceTree = "<group>"; };
 		E2ED50171C71B5C50000E5F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E2ED50271C71C2E30000E5F3 /* AccountHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountHeader.xib; sourceTree = "<group>"; };
 		E2ED502F1C71CF770000E5F3 /* SignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
 		E2ED50311C71CFAF0000E5F3 /* SignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		E2ED50331C71CFE50000E5F3 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				E2ED50331C71CFE50000E5F3 /* TabBarController.swift */,
 				E2ED50351C71D0220000E5F3 /* TimeLineController.swift */,
 				E2ED50391C71D1C10000E5F3 /* TimeLineDetailController.swift */,
+				E2BCE9CC1C78408B00617E55 /* AccountController.swift */,
 				E2B270EF1C723C670025B7F6 /* PostController.swift */,
 			);
 			name = Controller;
@@ -251,8 +254,8 @@
 			isa = PBXGroup;
 			children = (
 				E2ED4FF91C71B5C50000E5F3 /* Main.storyboard */,
-				E2ED50271C71C2E30000E5F3 /* AccountHeader.xib */,
 				E2ED4FFE1C71B5C50000E5F3 /* LaunchScreen.storyboard */,
+				E2BCE9D01C7854C800617E55 /* AccountHeader.xib */,
 			);
 			name = Layout;
 			sourceTree = "<group>";
@@ -368,8 +371,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2B270E81C720B540025B7F6 /* TwitterIcon.png in Resources */,
-				E2ED50281C71C2E30000E5F3 /* AccountHeader.xib in Resources */,
 				E2ED50001C71B5C50000E5F3 /* LaunchScreen.storyboard in Resources */,
+				E2BCE9D11C7854C800617E55 /* AccountHeader.xib in Resources */,
 				E2ED4FFD1C71B5C50000E5F3 /* Assets.xcassets in Resources */,
 				E2ED4FFB1C71B5C50000E5F3 /* Main.storyboard in Resources */,
 				E2B20FF91C7267330079D782 /* BackGroundImage.jpg in Resources */,
@@ -446,6 +449,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2BCE9CD1C78408B00617E55 /* AccountController.swift in Sources */,
 				E2B20FFB1C7277F80079D782 /* User.swift in Sources */,
 				E2ED50301C71CF770000E5F3 /* SignInController.swift in Sources */,
 				E2B270E11C7204210025B7F6 /* UserDetailTableViewCell.swift in Sources */,

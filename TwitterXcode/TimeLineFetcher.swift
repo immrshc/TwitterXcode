@@ -30,6 +30,25 @@ class TimeLineFetcher {
         baseURL = Routing.TimeLine.Reply.getURL()
     }
     
+    convenience init(selected_index: NSInteger){
+        self.init()
+        self.setURL(selected_index)
+        print("self.baseURL: \(self.baseURL)")
+    }
+    
+    private func setURL(segmentIndex:NSInteger) -> Void {
+        switch segmentIndex {
+        case 0:
+            //自分の投稿を表示する
+            self.baseURL = Routing.TimeLine.MyPost.getURL()
+        case 1:
+            //自分のお気に入りした投稿を表示する
+            self.baseURL = Routing.TimeLine.MyFavorite.getURL()
+        default:
+            print("error")
+        }
+    }
+    
     func download(callback:([TimeLine])->Void){
         Alamofire.request(.POST, baseURL!, parameters: defaultParameter).responseJSON{_, _, result in
             if result.isSuccess,
