@@ -18,22 +18,22 @@ class AccountHeaderView: UITableViewHeaderFooterView {
     @IBOutlet weak var followerButton: UIButton!
     @IBOutlet weak var selectPostButton: UISegmentedControl!
     
-    func displayUpdate(user_token: String){
+    func displayUpdate(user_token: String?){
         
         followingButton.tag = 0
         followerButton.tag = 1
         
-        UserFetcher(user_token: user_token).userDownload { (items) -> Void in
-            self.myself = items[0]
-            self.userNameLabel.text = self.myself!.username
-            //ユーザのアイコン画像を設定する
-            //userIV.sd_setImageWithURL(NSURL(string: (myself.icon_image_url)!))
-            self.iconIV.sd_setImageWithURL(NSURL(string: "TwitterIcon.png"))
-            //リロードが必要か確認する
+        UserFetcher(user_token: user_token!).userDownload { (items) -> Void in
+            print("AccountHeaderView.user_token: \(user_token)")
+            if items.count != 0 {
+                self.myself = items[0]
+                self.userNameLabel.text = self.myself!.username
+                //ユーザのアイコン画像を設定する
+                //userIV.sd_setImageWithURL(NSURL(string: (myself.icon_image_url)!))
+                self.iconIV.sd_setImageWithURL(NSURL(string: "TwitterIcon.png"))
+                //リロードが必要か確認する
+            }
         }
         
     }
-    
-    
-    
 }

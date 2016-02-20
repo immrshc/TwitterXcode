@@ -1002,6 +1002,7 @@
                                         </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RKl-Zb-gYb">
                                             <rect key="frame" x="8" y="8" width="54" height="54"/>
+                                            <color key="backgroundColor" red="0.34561357819999999" green="0.7038399071" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="RKl-Zb-gYb" secondAttribute="height" multiplier="1:1" id="CBl-m5-Psc"/>
                                                 <constraint firstAttribute="height" constant="40" id="NRm-ru-s4x"/>

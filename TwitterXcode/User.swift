@@ -14,7 +14,7 @@ class User {
     private (set) var user_identifier: String
     private (set) var username: String
     private (set) var icon_image_url: String
-    private (set) var following_state: Bool = false
+    private (set) var follow_state: Bool = false
     private (set) var following_count: Int = 0
     private (set) var follower_count: Int = 0
     
@@ -23,6 +23,9 @@ class User {
         self.user_identifier = json["user_identifier"].stringValue
         self.username = json["username"].stringValue
         self.icon_image_url = json["icon_image_url"].stringValue
+        self.follow_state = json["follow_state"].boolValue
+        self.following_count = json["following_count"].intValue
+        self.follower_count = json["follower_count"].intValue
     }
     
     func getUserData() -> [String:String] {
