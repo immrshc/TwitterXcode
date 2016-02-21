@@ -29,7 +29,7 @@ class AccountHeaderView: UITableViewHeaderFooterView {
         userNameLabel.text = self.myself!.username
         followingButton.setTitle("フォロー: \(self.myself!.following_count)", forState: .Normal)
         followerButton.setTitle("フォロワー: \(self.myself!.follower_count)", forState: .Normal)
-        followButton.addTarget(self, action: "followUpdate:", forControlEvents: UIControlEvents.TouchUpInside)
+        //followButton.addTarget(self, action: "followUpdate:", forControlEvents: UIControlEvents.TouchUpInside)
         //ユーザのアイコン画像を設定する
         iconIV.sd_setImageWithURL(NSURL(string: (myself!.icon_image_url)))
         

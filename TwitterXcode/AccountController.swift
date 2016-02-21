@@ -105,7 +105,7 @@ class AccountController: UITableViewController {
         }
         header.selectPostButton.addTarget(self, action: "postUpdate:", forControlEvents: UIControlEvents.ValueChanged)
         header.followingButton.addTarget(self, action: "showFollow:", forControlEvents: UIControlEvents.TouchUpInside)
-        //header.followerButton.addTarget(self, action: "showFollow:", forControlEvents: UIControlEvents.TouchUpInside)
+        header.followerButton.addTarget(self, action: "showFollow:", forControlEvents: UIControlEvents.TouchUpInside)
         return header
     }
     
