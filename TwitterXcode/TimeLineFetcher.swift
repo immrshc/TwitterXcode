@@ -56,8 +56,7 @@ class TimeLineFetcher {
 
     func locationUpdate(location:CLLocationCoordinate2D){
         defaultParameter.updateValue(["latitude": location.latitude, "longitude": location.longitude], forKey: "map")
-        //baseURL = Routing.TimeLine.Geography.getURL()
-        baseURL = Routing.TimeLine.TimeLine.getURL()
+        baseURL = Routing.TimeLine.Geography.getURL()
     }
 
     

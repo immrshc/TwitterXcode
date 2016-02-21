@@ -21,7 +21,9 @@ class TimeLine {
     private (set) var longitude:Double?
     private (set) var image_info:ImageOfTimeLine?
     
+    private (set) var user_token:String?
     private (set) var username:String?
+    private (set) var user_identifier: String?
     private (set) var icon_image_url:String?
     
     private (set) var favorite_check:Bool = false
@@ -36,7 +38,9 @@ class TimeLine {
             favorite_count: Int,
             retweet_check: Bool,
             retweet_count: Int,
+            user_token: String,
             username: String,
+            user_identifier: String,
             icon_image_url: String,
             text: String,
             image_url: String?,
@@ -49,7 +53,9 @@ class TimeLine {
             self.favorite_count = favorite_count
             self.retweet_check = retweet_check
             self.retweet_count = retweet_count
+            self.user_token = user_token
             self.username = username
+            self.user_identifier = user_identifier
             self.icon_image_url = icon_image_url
             self.text = text
             self.image_info = ImageOfTimeLine(url: image_url, size: image_size)
@@ -96,7 +102,9 @@ class TimeLineWrapper {
             favorite_count: json["favorite_count"].intValue,
             retweet_check: json["retweet_state"].boolValue,
             retweet_count: json["retweet_count"].intValue,
+            user_token: json["user"]["user_token"].stringValue,
             username: json["user"]["username"].stringValue,
+            user_identifier: json["user"]["user_identifier"].stringValue,
             icon_image_url: json["user"]["icon_image_url"].stringValue,
             text: json["post"]["text"].stringValue,
             image_url: self.getImageURL(json),

@@ -21,6 +21,7 @@ class MapController: UIViewController, MKMapViewDelegate {
         
         self.postMV.delegate = self
         
+        //テストのため
         /*
         let app = UIApplication.sharedApplication().delegate as! AppDelegate
         if let latitude = app.sharedUserData["latitude"] as? CLLocationDegrees,

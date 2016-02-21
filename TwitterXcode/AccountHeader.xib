@@ -26,7 +26,7 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jtg-5g-bVY">
                             <rect key="frame" x="96" y="8" width="42" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wlb-VE-z43">
@@ -88,10 +88,10 @@
                 <constraint firstItem="dfX-ma-28G" firstAttribute="leading" secondItem="oeA-5o-799" secondAttribute="leading" id="qg8-dn-14U"/>
             </constraints>
             <connections>
+                <outlet property="followButton" destination="Wlb-VE-z43" id="3It-J5-nbF"/>
                 <outlet property="followerButton" destination="nnk-rh-Qda" id="bfo-Le-xwd"/>
                 <outlet property="followingButton" destination="8IX-IO-oUc" id="SM3-kT-Sy0"/>
                 <outlet property="iconIV" destination="TRR-s8-jq3" id="ojU-5e-HRz"/>
-                <outlet property="searchUserIdButton" destination="Wlb-VE-z43" id="kst-rO-Y5j"/>
                 <outlet property="selectPostButton" destination="y12-l7-tOC" id="AXz-0D-eFc"/>
                 <outlet property="userNameLabel" destination="jtg-5g-bVY" id="VW6-nu-y8g"/>
             </connections>

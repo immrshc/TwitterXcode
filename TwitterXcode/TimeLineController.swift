@@ -77,8 +77,21 @@ class TimeLineController: UITableViewController {
         cell.displayUpdate(postArray[indexPath.row])
         cell.replyButton.tag = indexPath.row
         cell.replyButton.addTarget(self, action: "showReply:", forControlEvents: UIControlEvents.TouchUpInside)
+        //
+        cell.searchUserIdButton.tag = indexPath.row
+        cell.searchUserIdButton.addTarget(self, action: "showAccountDetail:", forControlEvents: UIControlEvents.TouchUpInside)
         return cell
     }
+    
+    //
+    func showAccountDetail(sender: UIButton){
+        if let vc = self.storyboard?.instantiateViewControllerWithIdentifier("AccountCtrl") as? AccountController {
+            print("userArray[indexPath.row].user_token:\(postArray[sender.tag].user_token)")
+            vc.user_token = postArray[sender.tag].user_token
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
         
     //replyボタンの設定
     func showReply(sender: UIButton){

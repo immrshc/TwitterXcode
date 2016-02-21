@@ -98,7 +98,6 @@ class AccountController: UITableViewController {
         //self.user_tokenでアカウント情報を非同期でとってからセルに渡さないとリロードできない
         UserFetcher(user_token: user_token!).userDownload { (items) -> Void in
             if items.count != 0 {
-                print("③items[0].following_count:\(items[0].following_count)")
                 header.myself = items[0]
                 header.displayUpdate()
                 header.setNeedsDisplay()
@@ -106,7 +105,7 @@ class AccountController: UITableViewController {
         }
         header.selectPostButton.addTarget(self, action: "postUpdate:", forControlEvents: UIControlEvents.ValueChanged)
         header.followingButton.addTarget(self, action: "showFollow:", forControlEvents: UIControlEvents.TouchUpInside)
-        header.followerButton.addTarget(self, action: "showFollow:", forControlEvents: UIControlEvents.TouchUpInside)
+        //header.followerButton.addTarget(self, action: "showFollow:", forControlEvents: UIControlEvents.TouchUpInside)
         return header
     }
     
@@ -141,7 +140,19 @@ class AccountController: UITableViewController {
         cell.displayUpdate(postArray[indexPath.row])
         cell.replyButton.tag = indexPath.row
         cell.replyButton.addTarget(self, action: "showReply:", forControlEvents: UIControlEvents.TouchUpInside)
+        //
+        cell.searchUserIdButton.tag = indexPath.row
+        cell.searchUserIdButton.addTarget(self, action: "showAccountDetail:", forControlEvents: UIControlEvents.TouchUpInside)
         return cell
+    }
+    
+    //
+    func showAccountDetail(sender: UIButton){
+        if let vc = self.storyboard?.instantiateViewControllerWithIdentifier("AccountCtrl") as? AccountController {
+            print("userArray[indexPath.row].user_token:\(postArray[sender.tag].user_token)")
+            vc.user_token = postArray[sender.tag].user_token
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     //replyボタンの設定

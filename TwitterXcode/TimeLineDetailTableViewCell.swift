@@ -34,6 +34,7 @@ class TimeLineDetailTableViewCell: UITableViewCell {
     func displayUpdate(timeline: TimeLine){
         post = timeline
         userNameLabel.text = post?.username
+        searchUserIdButton.setTitle(post?.user_identifier, forState: .Normal)
         
         //フォントとセルの幅からラベルの高さを返す
         postTV.text = post!.text
@@ -51,8 +52,7 @@ class TimeLineDetailTableViewCell: UITableViewCell {
         }
         
         //ユーザのアイコン画像を設定する
-        //userIV.sd_setImageWithURL(NSURL(string: (post?.icon_image_url)!))
-        userIV.sd_setImageWithURL(NSURL(string: "TwitterIcon.png"))
+        userIV.sd_setImageWithURL(NSURL(string: (post?.icon_image_url)!))
         
         //お気に入りボタンの更新処理を設定する
         favoriteButton.addTarget(self, action: "favoriteUpdate:", forControlEvents: UIControlEvents.TouchUpInside)

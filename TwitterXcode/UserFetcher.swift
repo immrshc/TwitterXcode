@@ -87,7 +87,7 @@ class UserFetcher {
         Alamofire.request(.POST, baseURL!, parameters: defaultParameter).responseJSON{_, _, result in
             if result.isSuccess,
                 let users = result.value as? [AnyObject]{
-                    print("①users: \(users)")
+                    print("users: \(users)")
                     var userArray:[User] = []
                     for var i = 0; i < users.count; i++ {
                         let user = User(json: JSON(users[i]))
