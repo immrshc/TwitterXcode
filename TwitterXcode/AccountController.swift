@@ -92,9 +92,18 @@ class AccountController: UITableViewController {
         return CGFloat(130)
     }
     
+    //ヘッダーの生成
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = self.tableView.dequeueReusableHeaderFooterViewWithIdentifier("AccountHeader") as! AccountHeaderView
-        header.displayUpdate(self.user_token)
+        //self.user_tokenでアカウント情報を非同期でとってからセルに渡さないとリロードできない
+        UserFetcher(user_token: user_token!).userDownload { (items) -> Void in
+            if items.count != 0 {
+                print("③items[0].following_count:\(items[0].following_count)")
+                header.myself = items[0]
+                header.displayUpdate()
+                header.setNeedsDisplay()
+            }
+        }
         header.selectPostButton.addTarget(self, action: "postUpdate:", forControlEvents: UIControlEvents.ValueChanged)
         header.followingButton.addTarget(self, action: "showFollow:", forControlEvents: UIControlEvents.TouchUpInside)
         header.followerButton.addTarget(self, action: "showFollow:", forControlEvents: UIControlEvents.TouchUpInside)

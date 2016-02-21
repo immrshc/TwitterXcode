@@ -1,51 +1,39 @@
 //
-//  ResponseHandler.swift
+//  RelationshipHander.swift
 //  TwitterXcode
 //
-//  Created by 今村翔一 on 2016/02/19.
+//  Created by 今村翔一 on 2016/02/21.
 //  Copyright © 2016年 今村翔一. All rights reserved.
 //
 
+import UIKit
 import Alamofire
 
-class ResponseHandler {
-
+class RelationshipHander {
+    
     var baseURL:String?
     private var defaultParameter:[String:[String:AnyObject]] = [:]
     private let app = UIApplication.sharedApplication().delegate as! AppDelegate
     
-    init(post: TimeLine){
+    init(following_token: String){
         defaultParameter = [
             "user":[
-                "user_token":(app.sharedUserData["user_token"])!,
-                "user_identifier":(app.sharedUserData["user_identifier"])!
-            ],
-            "post":[
-                "post_token": post.post_token!
+                "follower_token":(app.sharedUserData["user_token"])!,
+                "following_token":following_token
             ]
         ]
     }
     
-    func addFavorite(callback: (Bool)->Void){
-        baseURL = Routing.Response.AddFavorite.getURL()
+    func addFollowing(callback: (Bool)->Void){
+        baseURL = Routing.Relationship.AddFollowing.getURL()
         self.update(callback)
     }
     
-    func subtractFavorite(callback: (Bool)->Void){
-        baseURL = Routing.Response.SubtractFavorite.getURL()
+    func subtractFollowing(callback: (Bool)->Void){
+        baseURL = Routing.Relationship.SubtractFollowing.getURL()
         self.update(callback)
     }
-    
-    func addRetweet(callback: (Bool)->Void){
-        baseURL = Routing.Response.AddRetweet.getURL()
-        self.update(callback)
-    }
-    
-    func subtractRetweet(callback: (Bool)->Void){
-        baseURL = Routing.Response.SubtractRetweet.getURL()
-        self.update(callback)
-    }
-    
+        
     //
     private func update(callback:(Bool)->Void){
         Alamofire.request(.POST, baseURL!, parameters: defaultParameter).responseJSON {_, _, result in
@@ -62,5 +50,5 @@ class ResponseHandler {
             }
         }
     }
-    
+
 }

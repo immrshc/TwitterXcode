@@ -33,10 +33,6 @@
                             <rect key="frame" x="142" y="8" width="450" height="30"/>
                             <state key="normal" title="Button"/>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnk-rh-Qda">
-                            <rect key="frame" x="162" y="46" width="75" height="30"/>
-                            <state key="normal" title="フォロワー"/>
-                        </button>
                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="y12-l7-tOC">
                             <rect key="frame" x="-3" y="570" width="606" height="31"/>
                             <constraints>
@@ -48,14 +44,22 @@
                             </segments>
                         </segmentedControl>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8IX-IO-oUc">
-                            <rect key="frame" x="94" y="46" width="60" height="30"/>
+                            <rect key="frame" x="94" y="42" width="40" height="24"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
                             <state key="normal" title="フォロー"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnk-rh-Qda">
+                            <rect key="frame" x="92" y="70" width="50" height="24"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <state key="normal" title="フォロワー"/>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="y12-l7-tOC" secondAttribute="trailing" constant="-3" id="1YV-Go-0xU"/>
+                        <constraint firstItem="nnk-rh-Qda" firstAttribute="leading" secondItem="TRR-s8-jq3" secondAttribute="trailing" constant="4" id="589-uJ-qg2"/>
                         <constraint firstAttribute="trailing" secondItem="Wlb-VE-z43" secondAttribute="trailing" constant="8" id="8gy-de-gtP"/>
+                        <constraint firstItem="nnk-rh-Qda" firstAttribute="top" secondItem="8IX-IO-oUc" secondAttribute="bottom" constant="4" id="Bqi-u1-PP8"/>
                         <constraint firstItem="Wlb-VE-z43" firstAttribute="leading" secondItem="jtg-5g-bVY" secondAttribute="trailing" constant="4" id="Bu3-iu-2ZL"/>
                         <constraint firstItem="y12-l7-tOC" firstAttribute="leading" secondItem="dfX-ma-28G" secondAttribute="leading" constant="-3" id="D0Y-ih-N1b"/>
                         <constraint firstItem="8IX-IO-oUc" firstAttribute="leading" secondItem="TRR-s8-jq3" secondAttribute="trailing" constant="6" id="DhB-P6-gPd"/>
@@ -63,14 +67,18 @@
                         <constraint firstItem="y12-l7-tOC" firstAttribute="centerX" secondItem="dfX-ma-28G" secondAttribute="centerX" id="TMm-yh-bqI"/>
                         <constraint firstItem="TRR-s8-jq3" firstAttribute="leading" secondItem="dfX-ma-28G" secondAttribute="leading" constant="8" id="U6J-oJ-LXP"/>
                         <constraint firstItem="jtg-5g-bVY" firstAttribute="leading" secondItem="TRR-s8-jq3" secondAttribute="trailing" constant="8" id="VMB-5W-grb"/>
-                        <constraint firstItem="nnk-rh-Qda" firstAttribute="centerY" secondItem="8IX-IO-oUc" secondAttribute="centerY" id="bfw-Q8-dFH"/>
-                        <constraint firstItem="8IX-IO-oUc" firstAttribute="top" secondItem="jtg-5g-bVY" secondAttribute="bottom" constant="8" id="cC1-D2-nrG"/>
+                        <constraint firstItem="8IX-IO-oUc" firstAttribute="top" secondItem="jtg-5g-bVY" secondAttribute="bottom" constant="4" id="cC1-D2-nrG"/>
                         <constraint firstItem="nnk-rh-Qda" firstAttribute="leading" secondItem="8IX-IO-oUc" secondAttribute="trailing" constant="8" id="dKC-3y-R8V"/>
                         <constraint firstItem="TRR-s8-jq3" firstAttribute="top" secondItem="dfX-ma-28G" secondAttribute="top" constant="8" id="dyQ-1N-Lhn"/>
                         <constraint firstItem="jtg-5g-bVY" firstAttribute="top" secondItem="dfX-ma-28G" secondAttribute="top" constant="8" id="gkA-vP-1SU"/>
                         <constraint firstItem="Wlb-VE-z43" firstAttribute="top" secondItem="dfX-ma-28G" secondAttribute="top" constant="8" id="h5R-9r-Kpp"/>
                         <constraint firstAttribute="bottom" secondItem="y12-l7-tOC" secondAttribute="bottom" id="rol-oP-g5b"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="dKC-3y-R8V"/>
+                        </mask>
+                    </variation>
                 </view>
             </subviews>
             <constraints>

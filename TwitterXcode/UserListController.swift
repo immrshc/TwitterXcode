@@ -30,14 +30,15 @@ class UserListController: UITableViewController {
             UserFetcher(user_token: user_token, following_check: following_check).userDownload { (items) -> Void in
                 self.userArray = items
                 self.tableView.reloadData()
-                //print("userArray: \(self.userArray)")
             }
         }
     }
     
+    //ここに画面遷移する際に、データを設定する際に用いる
     func dataUpdate(user_token: String?){
         self.user_token = user_token
     }
+
     
     //上に引っ張ると投稿をリロードする
     func refresh(){
@@ -76,11 +77,8 @@ class UserListController: UITableViewController {
     //アカウント画面へ遷移する
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let vc = self.storyboard?.instantiateViewControllerWithIdentifier("AccountCtrl") as? AccountController {
-            print("userArray[indexPath.row]:\(userArray[indexPath.row])")
             print("userArray[indexPath.row].user_token:\(userArray[indexPath.row].user_token)")
             vc.user_token = userArray[indexPath.row].user_token
-            //ここが原因
-            print("vc.user_token: \(vc.user_token)")
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

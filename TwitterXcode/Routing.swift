@@ -34,16 +34,9 @@ enum Routing {
         }
     }
     
-    enum TimeLine: String {
-        //全てのタイムラインの表示
-        case TimeLine = "/timeline/show.json"
-        //投稿に紐付いた返信の投稿を表示
-        case Reply = "/timeline/show/reply.json"
-        //自分の投稿の表示
-        case MyPost = "/timeline/show/mypost.json"
-        //お気に入りの投稿の表示
-        case MyFavorite = "/timeline/show/myfavorite.json"
-        
+    enum Relationship: String {
+        case AddFollowing = "/account/following/add.json"
+        case SubtractFollowing = "/account/following/subtract.json"
         func getURL() -> String  {
             return Routing.Base.Host.rawValue + self.rawValue
         }
@@ -56,6 +49,21 @@ enum Routing {
         case Image = "/post/with.json"
         
         func getURL() -> String {
+            return Routing.Base.Host.rawValue + self.rawValue
+        }
+    }
+    
+    enum TimeLine: String {
+        //全てのタイムラインの表示
+        case TimeLine = "/timeline/show.json"
+        //投稿に紐付いた返信の投稿を表示
+        case Reply = "/timeline/show/reply.json"
+        //自分の投稿の表示
+        case MyPost = "/timeline/show/mypost.json"
+        //お気に入りの投稿の表示
+        case MyFavorite = "/timeline/show/myfavorite.json"
+        
+        func getURL() -> String  {
             return Routing.Base.Host.rawValue + self.rawValue
         }
     }
@@ -74,4 +82,5 @@ enum Routing {
             return Routing.Base.Host.rawValue + self.rawValue
         }
     }
+    
 }

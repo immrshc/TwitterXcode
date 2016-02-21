@@ -996,9 +996,6 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mey-0n-6zj">
                                             <rect key="frame" x="266" y="8" width="46" height="30"/>
                                             <state key="normal" title="Button"/>
-                                            <connections>
-                                                <action selector="followButton:" destination="nek-pu-tR3" eventType="touchUpInside" id="N6K-EZ-QL6"/>
-                                            </connections>
                                         </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RKl-Zb-gYb">
                                             <rect key="frame" x="8" y="8" width="54" height="54"/>
@@ -1035,6 +1032,7 @@
                                     </variation>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="followButton" destination="Mey-0n-6zj" id="4iK-9s-cBW"/>
                                     <outlet property="iconIV" destination="RKl-Zb-gYb" id="QLD-UI-edR"/>
                                     <outlet property="userIdLabel" destination="GRG-AQ-YQp" id="t3w-4d-VW4"/>
                                     <outlet property="userNameLabel" destination="KnB-ps-IAp" id="nJl-mB-6kd"/>
