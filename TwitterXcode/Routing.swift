@@ -62,6 +62,8 @@ enum Routing {
         case MyPost = "/timeline/show/mypost.json"
         //お気に入りの投稿の表示
         case MyFavorite = "/timeline/show/myfavorite.json"
+        //
+        case Geography = "/timeline/show/geography.json"
         
         func getURL() -> String  {
             return Routing.Base.Host.rawValue + self.rawValue

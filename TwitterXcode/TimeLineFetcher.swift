@@ -8,6 +8,7 @@
 
 import Alamofire
 import SwiftyJSON
+import CoreLocation
 
 class TimeLineFetcher {
 
@@ -52,6 +53,13 @@ class TimeLineFetcher {
             print("error")
         }
     }
+
+    func locationUpdate(location:CLLocationCoordinate2D){
+        defaultParameter.updateValue(["latitude": location.latitude, "longitude": location.longitude], forKey: "map")
+        //baseURL = Routing.TimeLine.Geography.getURL()
+        baseURL = Routing.TimeLine.TimeLine.getURL()
+    }
+
     
     func download(callback:([TimeLine])->Void){
         Alamofire.request(.POST, baseURL!, parameters: defaultParameter).responseJSON{_, _, result in

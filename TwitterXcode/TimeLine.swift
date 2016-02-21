@@ -101,8 +101,8 @@ class TimeLineWrapper {
             text: json["post"]["text"].stringValue,
             image_url: self.getImageURL(json),
             image_size: self.getImageSize(json),
-            latitude: json["latitude"].doubleValue,
-            longitude: json["longitude"].doubleValue
+            latitude: json["post"]["latitude"].doubleValue,
+            longitude: json["post"]["longitude"].doubleValue
         )
         
         return timeLine

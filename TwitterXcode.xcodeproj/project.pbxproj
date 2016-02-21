@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		7DB02AEBD93B3E7FB0DD7BC1 /* Pods_TwitterXcode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B456FCB4F7E874DB9C0DDAE6 /* Pods_TwitterXcode.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E20A72611C79B8C9000F99D9 /* RelationshipHander.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A72601C79B8C9000F99D9 /* RelationshipHander.swift */; };
+		E20A72631C79C8BE000F99D9 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A72621C79C8BE000F99D9 /* MapController.swift */; };
 		E26D0E431C771422003F2991 /* ResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D0E421C771422003F2991 /* ResponseHandler.swift */; };
+		E27A09471C79D88F002EC43A /* GeographicalTimeLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27A09461C79D88F002EC43A /* GeographicalTimeLine.swift */; };
 		E2A37B601C7575760029CA09 /* Image02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A37B5F1C7575760029CA09 /* Image02.jpg */; };
 		E2B20FF91C7267330079D782 /* BackGroundImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2B20FF81C7267330079D782 /* BackGroundImage.jpg */; };
 		E2B20FFB1C7277F80079D782 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B20FFA1C7277F80079D782 /* User.swift */; };
@@ -64,7 +66,9 @@
 		B456FCB4F7E874DB9C0DDAE6 /* Pods_TwitterXcode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitterXcode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA27730D46EB3261AD5744EF /* Pods-TwitterXcode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterXcode.release.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterXcode/Pods-TwitterXcode.release.xcconfig"; sourceTree = "<group>"; };
 		E20A72601C79B8C9000F99D9 /* RelationshipHander.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelationshipHander.swift; sourceTree = "<group>"; };
+		E20A72621C79C8BE000F99D9 /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		E26D0E421C771422003F2991 /* ResponseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseHandler.swift; sourceTree = "<group>"; };
+		E27A09461C79D88F002EC43A /* GeographicalTimeLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeographicalTimeLine.swift; sourceTree = "<group>"; };
 		E2A37B5F1C7575760029CA09 /* Image02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Image02.jpg; sourceTree = "<group>"; };
 		E2B20FF81C7267330079D782 /* BackGroundImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BackGroundImage.jpg; sourceTree = "<group>"; };
 		E2B20FFA1C7277F80079D782 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -225,6 +229,7 @@
 				E2BCE9CC1C78408B00617E55 /* AccountController.swift */,
 				E2B270EF1C723C670025B7F6 /* PostController.swift */,
 				E2CA91C51C78ACC300864204 /* UserListController.swift */,
+				E20A72621C79C8BE000F99D9 /* MapController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -241,6 +246,7 @@
 				E2B4E5B91C73148E003F3FD9 /* TimeLineFetcher.swift */,
 				E26D0E421C771422003F2991 /* ResponseHandler.swift */,
 				E20A72601C79B8C9000F99D9 /* RelationshipHander.swift */,
+				E27A09461C79D88F002EC43A /* GeographicalTimeLine.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -456,6 +462,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2BCE9CD1C78408B00617E55 /* AccountController.swift in Sources */,
+				E27A09471C79D88F002EC43A /* GeographicalTimeLine.swift in Sources */,
 				E2B20FFB1C7277F80079D782 /* User.swift in Sources */,
 				E2ED50301C71CF770000E5F3 /* SignInController.swift in Sources */,
 				E2B270F01C723C670025B7F6 /* PostController.swift in Sources */,
@@ -471,6 +478,7 @@
 				E2ED50361C71D0220000E5F3 /* TimeLineController.swift in Sources */,
 				E2B270EC1C72182B0025B7F6 /* TimeLineTableViewCell.swift in Sources */,
 				E2B4E5B21C72F13C003F3FD9 /* Post.swift in Sources */,
+				E20A72631C79C8BE000F99D9 /* MapController.swift in Sources */,
 				E26D0E431C771422003F2991 /* ResponseHandler.swift in Sources */,
 				E2B4E5B41C72F149003F3FD9 /* PostDispatcher.swift in Sources */,
 				E2B20FFD1C72782B0079D782 /* UserFetcher.swift in Sources */,
