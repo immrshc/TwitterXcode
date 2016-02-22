@@ -10,7 +10,8 @@ enum Routing {
     
     enum Base: String {
         //サーバのIPが変わった場合はここだけを変更すれば良い
-        case Host = "http://localhost:3000"
+        //case Host = "http://localhost:3000"
+        case Host = "http://52.193.43.147:3000"
     }
     
     enum Auth: String {

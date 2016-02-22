@@ -8,11 +8,12 @@
 
 import UIKit
 import AVFoundation
+import Photos
 
 class PostController: UIViewController, UITabBarDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var receiver_post:TimeLine?
-    var image_url: String = ""
+    var image_url: NSURL?
     private var latitude: Double?
     private var longitude: Double?
     
@@ -22,18 +23,27 @@ class PostController: UIViewController, UITabBarDelegate, UIImagePickerControlle
     @IBOutlet weak var photoHeight: NSLayoutConstraint!
     
     //投稿する画像を選択する際に必要な処理をする
-    private func setPhoto(imagePath: String){
+    private func setTemplatePhoto(imagePath: String){
         //privateにしていると既にインスタンスが生成されているので、代入できない
-        self.image_url = imagePath
-        postIV.image = UIImage(named:imagePath)
-        
+        let postImage: NSString = NSString(string: imagePath)
+        let fileURL = NSBundle.mainBundle().URLForResource(postImage.stringByDeletingPathExtension, withExtension: postImage.pathExtension)!
+        self.setPhoto(fileURL)
+    }
+    
+    private func setPhoto(fileURL: NSURL){
+        postIV.sd_setImageWithURL(fileURL)
+        self.image_url = fileURL
+        self.setImageHeight()
+    }
+    
+    private func setImageHeight(){
         if let photoSize = postIV.image?.size {
             //写真を当てはめる枠となる領域
             let boundingRect =  CGRect(x: 0, y: 0, width: CGFloat(self.view.bounds.width - 140), height: CGFloat(self.view.bounds.height - 282))
             //枠となる領域にAspectRatioで写真を当てはめた時の写真の領域を返す
             let rect  = AVMakeRectWithAspectRatioInsideRect(photoSize, boundingRect)
             photoHeight.constant = rect.size.height
-        } else {
+            } else {
             photoHeight.constant = CGFloat(0)
         }
     }
@@ -46,7 +56,7 @@ class PostController: UIViewController, UITabBarDelegate, UIImagePickerControlle
         if let latitude = self.latitude,
             let longitude = self.longitude,
             let text = postTV.text {
-                let post = PostWrapper.getInstance(["text": text, "image_url": image_url, "latitude": latitude, "longitude": longitude])
+                let post = PostWrapper.getInstance(["text": text, "image_url": image_url!, "latitude": latitude, "longitude": longitude])
                 //正しく初期化されていないとnilを返している
                 if let post = post {
                     if post.image_url != nil {
@@ -98,7 +108,7 @@ class PostController: UIViewController, UITabBarDelegate, UIImagePickerControlle
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
         switch item.tag {
         case 0:
-            self.setPhoto("Image02.jpg")
+            self.setTemplatePhoto("Image02.jpg")
         case 1:
             //カメラロールへアクセス
             self.pickImageFromLibrary()
@@ -120,16 +130,23 @@ class PostController: UIViewController, UITabBarDelegate, UIImagePickerControlle
     //写真を選択した時に呼ばれる
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if info[UIImagePickerControllerOriginalImage] != nil {
-            if let assetURL:AnyObject = info[UIImagePickerControllerReferenceURL] {
-                print(String(assetURL))
-                //self.setPhoto(imageのPath)
-                //このURLを取り出すにはAssetLibrary.Frameworkが必要になる
+            //背景に画像を設定する
+            if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+                self.postIV.image = image
             }
+            // from album
+            let pickedURL:NSURL = info[UIImagePickerControllerReferenceURL] as! NSURL
+            let fetchResult: PHFetchResult = PHAsset.fetchAssetsWithALAssetURLs([pickedURL], options: nil)
+            let asset: PHAsset = fetchResult.firstObject as! PHAsset
+            
+            PHImageManager.defaultManager().requestImageDataForAsset(asset, options: nil, resultHandler: {(imageData: NSData?, dataUTI: String?, orientation: UIImageOrientation, info: [NSObject : AnyObject]?) in
+                let fileUrl: NSURL = info!["PHImageFileURLKey"] as! NSURL
+                print("fileUrl: \(fileUrl)")
+                self.setPhoto(fileUrl)
+            })
+
             picker.dismissViewControllerAnimated(true, completion: nil)
         }
     }
-
-
-
-
+    
 }

@@ -14,7 +14,7 @@ class AccountHeaderView: UITableViewHeaderFooterView {
     @IBOutlet weak var iconIV: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     
-    @IBOutlet weak var followButton: UIButton!
+    //@IBOutlet weak var followButton: UIButton!
     
     @IBOutlet weak var followingButton: UIButton!
     @IBOutlet weak var followerButton: UIButton!
@@ -35,6 +35,7 @@ class AccountHeaderView: UITableViewHeaderFooterView {
         
     }
     
+    /*
     func followUpdate(sender: UIButton){
         //user.user_token :相手のトークン
         //user_token = app :自分のトークン
@@ -60,6 +61,7 @@ class AccountHeaderView: UITableViewHeaderFooterView {
         }
     }
     
+    
     private func followingUser(){
         followButton.backgroundColor = UIColor.cyanColor()
         followButton.setTitle("フォロー中", forState: .Normal)
@@ -71,4 +73,5 @@ class AccountHeaderView: UITableViewHeaderFooterView {
         followButton.setTitle("フォローする", forState: .Normal)
         followButton.setTitleColor(UIColor.cyanColor(), forState: .Normal)
     }
+    */
 }

@@ -68,9 +68,8 @@ class PostDispatcher {
     //画像のアップロードと投稿情報のリクエストをする
     func uploadWithImage(callback: (Bool) -> Void){
         
-        if let imageURL = params["post"]!["image_url"] as? String {
-            let postImage: NSString = NSString(string: imageURL)
-            fileURL = NSBundle.mainBundle().URLForResource(postImage.stringByDeletingPathExtension, withExtension: postImage.pathExtension)!
+        if let imageURL = params["post"]!["image_url"] as? NSURL {
+            self.fileURL = imageURL
         }
         
         Alamofire.upload(.POST, uploadURL, multipartFormData: { (multipartFormData) in
@@ -89,13 +88,6 @@ class PostDispatcher {
                     multipartFormData.appendBodyPart(data: receiver_token.dataUsingEncoding(NSUTF8StringEncoding)!, name: "receiver_token")
                 }
             
-                /*
-                //辞書型データをNSData型にする
-                let userData:NSData = NSKeyedArchiver.archivedDataWithRootObject(self.params["user"]!)
-                multipartFormData.appendBodyPart(data: userData, name: "user")
-                let postData:NSData = NSKeyedArchiver.archivedDataWithRootObject(self.params["post"]!)
-                multipartFormData.appendBodyPart(data: postData, name: "post")
-                */
                 //画像をアップロードする
                 if let fileURL = self.fileURL {
                     multipartFormData.appendBodyPart(fileURL: fileURL, name: "image")
