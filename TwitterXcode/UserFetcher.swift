@@ -69,9 +69,9 @@ class UserFetcher {
     }
     
     func download(callback:(Bool)->Void){
-        Alamofire.request(.POST, baseURL, parameters: defaultParameter).responseJSON {_, _, result in
-            if result.isSuccess,
-                let res = result.value as? [String:AnyObject]{
+        Alamofire.request(.POST, baseURL, parameters: defaultParameter).responseJSON { response in
+            if response.result.isSuccess,
+                let res = response.result.value as? [String:AnyObject]{
                     //trueなら1, falseなら0になっている
                     if res["result"]?.integerValue == 1 {
                         //userDataをストレージに保存する
@@ -84,9 +84,9 @@ class UserFetcher {
     }
     
     func userDownload(callback:([User])->Void){
-        Alamofire.request(.POST, baseURL!, parameters: defaultParameter).responseJSON{_, _, result in
-            if result.isSuccess,
-                let users = result.value as? [AnyObject]{
+        Alamofire.request(.POST, baseURL!, parameters: defaultParameter).responseJSON{ response in
+            if response.result.isSuccess,
+                let users = response.result.value as? [AnyObject]{
                     print("users: \(users)")
                     var userArray:[User] = []
                     for var i = 0; i < users.count; i++ {

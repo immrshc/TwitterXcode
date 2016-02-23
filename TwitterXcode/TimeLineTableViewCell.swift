@@ -39,7 +39,13 @@ class TimeLineTableViewCell: UITableViewCell {
         
         //アスペクト比に応じた写真の高さを取得して、セルの写真の高さにする
         if let imageURL = post?.image_info?.url {
-            postIV.sd_setImageWithURL(NSURL(string: imageURL))
+            //sd_setImageWithURLだと以前のURLが反映される
+            //postIV.sd_setImageWithURL(NSURL(string: imageURL))
+            let url = NSURL(string: imageURL)
+            let req = NSURLRequest(URL:url!)
+            NSURLConnection.sendAsynchronousRequest(req, queue:NSOperationQueue.mainQueue()){(res, data, err) in
+                self.postIV.image = UIImage(data:data!)
+            }
             let boundingRect =  CGRect(x: 0, y: 0, width: postIV.bounds.width, height: CGFloat(300))
             let rect  = AVMakeRectWithAspectRatioInsideRect(postIV.bounds.size, boundingRect)
             postImageHeight.constant = rect.size.height

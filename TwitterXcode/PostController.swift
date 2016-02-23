@@ -142,6 +142,7 @@ class PostController: UIViewController, UITabBarDelegate, UIImagePickerControlle
             PHImageManager.defaultManager().requestImageDataForAsset(asset, options: nil, resultHandler: {(imageData: NSData?, dataUTI: String?, orientation: UIImageOrientation, info: [NSObject : AnyObject]?) in
                 let fileUrl: NSURL = info!["PHImageFileURLKey"] as! NSURL
                 print("fileUrl: \(fileUrl)")
+                //Xcodeではなく、実機ではパスが取れない
                 self.setPhoto(fileUrl)
             })
 

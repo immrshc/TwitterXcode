@@ -31,7 +31,13 @@ class AccountHeaderView: UITableViewHeaderFooterView {
         followerButton.setTitle("フォロワー: \(self.myself!.follower_count)", forState: .Normal)
         //followButton.addTarget(self, action: "followUpdate:", forControlEvents: UIControlEvents.TouchUpInside)
         //ユーザのアイコン画像を設定する
-        iconIV.sd_setImageWithURL(NSURL(string: (myself!.icon_image_url)))
+        //iconIV.sd_setImageWithURL(NSURL(string: (myself!.icon_image_url)))
+        let url = NSURL(string: myself!.icon_image_url)
+        let req = NSURLRequest(URL:url!)
+        NSURLConnection.sendAsynchronousRequest(req, queue:NSOperationQueue.mainQueue()){(res, data, err) in
+            self.iconIV.image = UIImage(data:data!)
+        }
+        
         
     }
     

@@ -51,9 +51,9 @@ class PostDispatcher {
     
     //画像がない投稿情報をリクエスト
     func upload(callback: (Bool) -> Void){
-                Alamofire.request(.POST, postURL, parameters: params).responseJSON{_, _, result in
-                    if result.isSuccess,
-                        let res = result.value as? [String:AnyObject]{
+                Alamofire.request(.POST, postURL, parameters: params).responseJSON{ response in
+                    if response.result.isSuccess,
+                        let res = response.result.value as? [String:AnyObject]{
                             if res["result"]?.intValue == 1 {
                                 callback(true)
                             } else {
@@ -99,9 +99,9 @@ class PostDispatcher {
                 switch encodingResult {
                 //エンコード成功時
                 case .Success(let upload, _, _):
-                    upload.responseJSON { _, _, result in
-                        if result.isSuccess,
-                            let res = result.value as? [String:AnyObject]{
+                    upload.responseJSON { response in
+                        if response.result.isSuccess,
+                            let res = response.result.value as? [String:AnyObject]{
                                 if res["result"]?.intValue == 1 {
                                     callback(true)
                                 } else {

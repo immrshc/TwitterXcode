@@ -10,6 +10,9 @@
 		7DB02AEBD93B3E7FB0DD7BC1 /* Pods_TwitterXcode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B456FCB4F7E874DB9C0DDAE6 /* Pods_TwitterXcode.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E20A72611C79B8C9000F99D9 /* RelationshipHander.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A72601C79B8C9000F99D9 /* RelationshipHander.swift */; };
 		E20A72631C79C8BE000F99D9 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20A72621C79C8BE000F99D9 /* MapController.swift */; };
+		E21CA3841C7CBF080026490A /* ichikawa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E21CA3811C7CBF080026490A /* ichikawa.jpg */; };
+		E21CA3861C7CBF080026490A /* ohuben.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E21CA3831C7CBF080026490A /* ohuben.jpg */; };
+		E21CA38A1C7CC3E00026490A /* keizai.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E21CA3891C7CC3E00026490A /* keizai.jpg */; };
 		E26D0E431C771422003F2991 /* ResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D0E421C771422003F2991 /* ResponseHandler.swift */; };
 		E27A09471C79D88F002EC43A /* GeographicalTimeLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27A09461C79D88F002EC43A /* GeographicalTimeLine.swift */; };
 		E2A37B601C7575760029CA09 /* Image02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2A37B5F1C7575760029CA09 /* Image02.jpg */; };
@@ -67,6 +70,9 @@
 		DA27730D46EB3261AD5744EF /* Pods-TwitterXcode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterXcode.release.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterXcode/Pods-TwitterXcode.release.xcconfig"; sourceTree = "<group>"; };
 		E20A72601C79B8C9000F99D9 /* RelationshipHander.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelationshipHander.swift; sourceTree = "<group>"; };
 		E20A72621C79C8BE000F99D9 /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
+		E21CA3811C7CBF080026490A /* ichikawa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ichikawa.jpg; sourceTree = "<group>"; };
+		E21CA3831C7CBF080026490A /* ohuben.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ohuben.jpg; sourceTree = "<group>"; };
+		E21CA3891C7CC3E00026490A /* keizai.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = keizai.jpg; sourceTree = "<group>"; };
 		E26D0E421C771422003F2991 /* ResponseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseHandler.swift; sourceTree = "<group>"; };
 		E27A09461C79D88F002EC43A /* GeographicalTimeLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeographicalTimeLine.swift; sourceTree = "<group>"; };
 		E2A37B5F1C7575760029CA09 /* Image02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Image02.jpg; sourceTree = "<group>"; };
@@ -154,8 +160,11 @@
 		E2B270E61C720B3C0025B7F6 /* Asset */ = {
 			isa = PBXGroup;
 			children = (
+				E21CA3811C7CBF080026490A /* ichikawa.jpg */,
+				E21CA3831C7CBF080026490A /* ohuben.jpg */,
 				E2B270E71C720B540025B7F6 /* TwitterIcon.png */,
 				E2B20FF81C7267330079D782 /* BackGroundImage.jpg */,
+				E21CA3891C7CC3E00026490A /* keizai.jpg */,
 				E2A37B5F1C7575760029CA09 /* Image02.jpg */,
 			);
 			name = Asset;
@@ -382,10 +391,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E21CA3861C7CBF080026490A /* ohuben.jpg in Resources */,
 				E2B270E81C720B540025B7F6 /* TwitterIcon.png in Resources */,
 				E2ED50001C71B5C50000E5F3 /* LaunchScreen.storyboard in Resources */,
 				E2BCE9D11C7854C800617E55 /* AccountHeader.xib in Resources */,
 				E2ED4FFD1C71B5C50000E5F3 /* Assets.xcassets in Resources */,
+				E21CA3841C7CBF080026490A /* ichikawa.jpg in Resources */,
+				E21CA38A1C7CC3E00026490A /* keizai.jpg in Resources */,
 				E2ED4FFB1C71B5C50000E5F3 /* Main.storyboard in Resources */,
 				E2B20FF91C7267330079D782 /* BackGroundImage.jpg in Resources */,
 				E2A37B601C7575760029CA09 /* Image02.jpg in Resources */,

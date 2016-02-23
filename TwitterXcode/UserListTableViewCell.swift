@@ -18,7 +18,12 @@ class UserListTableViewCell: UITableViewCell {
     
     func displayUpdate(user: User){
         self.user = user
-        iconIV.sd_setImageWithURL(NSURL(string: self.user!.icon_image_url))
+        let url = NSURL(string: self.user!.icon_image_url)
+        let req = NSURLRequest(URL:url!)
+        NSURLConnection.sendAsynchronousRequest(req, queue:NSOperationQueue.mainQueue()){(res, data, err) in
+            self.iconIV.image = UIImage(data:data!)
+        }
+        //iconIV.sd_setImageWithURL(NSURL(string: self.user!.icon_image_url))
         userNameLabel.text = self.user?.username
         userIdLabel.text = self.user?.user_identifier
         if user.follow_state == true {

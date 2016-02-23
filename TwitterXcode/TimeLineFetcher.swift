@@ -6,7 +6,9 @@
 //  Copyright © 2016年 今村翔一. All rights reserved.
 //
 
+
 import Alamofire
+import AlamofireImage
 import SwiftyJSON
 import CoreLocation
 
@@ -61,9 +63,9 @@ class TimeLineFetcher {
 
     
     func download(callback:([TimeLine])->Void){
-        Alamofire.request(.POST, baseURL!, parameters: defaultParameter).responseJSON{_, _, result in
-            if result.isSuccess,
-                let posts = result.value as? [AnyObject]{
+        Alamofire.request(.POST, baseURL!, parameters: defaultParameter).responseJSON{ response in
+            if response.result.isSuccess,
+                let posts = response.result.value as? [AnyObject]{
                     var postArray:[TimeLine] = []
                     for var i = 0; i < posts.count; i++ {
                         let post = TimeLineWrapper().getInstance(JSON(posts[i]))
@@ -76,5 +78,22 @@ class TimeLineFetcher {
             }
         }
     }
+    
+    /*
+    func imageDownload(url: String) -> Void {
+        Alamofire.request(.GET, "aaaaa").responsImage{ response in
+            if response.result.isSuccess,
+                let data = response.result.value as? [AnyObject]{
+                    dispatch_async(dispatch_get_main_queue()) { () in
+                        self.photoImage.image = UIImage(data: data as NSData)
+                    }
+                    callback(postArray)
+            } else {
+                callback([])
+                print("Tokenが間違っています")
+            }
+        }
+    }
+    */
 
 }
